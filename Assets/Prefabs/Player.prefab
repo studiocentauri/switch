@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  acceleration: 10000
-  maxSpeed: 15
+  acceleration: 12500
+  maxSpeed: 20
   friction: 1
   isGroundDown: 1
   offset:
@@ -59,13 +59,15 @@ MonoBehaviour:
   detectRange: 1
   isOnGround: 0
   dummyIsOnGround: 0
-  gravity: 50
-  jumpPow: 120
+  gravity: 100
+  jumpPow: 50
   jumpWaitTimer: 0.5
   specialWaitTimer: 0.2
   smashDelatTimer: 0.2
   isMale: 1
-  smashvel: 30
+  smashvel: 100
+  dashForce: 100
+  dashDuration: 0.15
 --- !u!61 &6207099295087118590
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -112,7 +114,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &6207099296606992176
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,6 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6207099296606992183}
   - component: {fileID: 6207099296606992182}
+  - component: {fileID: 294564941033903584}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -187,7 +190,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: a9d5b630a697deb409436503d472a7ee, type: 3}
-  m_Color: {r: 0, g: 0.43639326, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -197,3 +200,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &294564941033903584
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6207099296606992176}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0e4dd284c112e7b479d9c61e90c10311, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

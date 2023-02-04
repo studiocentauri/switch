@@ -43,43 +43,44 @@ public class Controller : MonoBehaviour
 
     public float smashvel = 30f;
 
+    int switchgravfac;
+
+    float lookDirection = 1;
+
+    public float dashForce = 20.0f;
+
+    public float dashDuration = 0.2f;
+
+    Animator animator;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
+        switchgravfac = isGroundDown ? 1 : -1;
     }
 
     public void FixedUpdate()
     {
-
         DoGravity();
-        
-        int switchgravfac = isGroundDown ? 1 : -1;
-
-        if (rb.velocity.y * switchgravfac < 0)
+        if (rb.velocity.y * switchgravfac <= 0.01f)
         {
-
-
             foreach (Vector2 offseti in offset)
             {
-
                 Debug.DrawRay(rb.position + Vector2.Scale(offseti, new Vector2(1, switchgravfac)), Vector2.down * detectRange * switchgravfac, Color.black, 0.1f);
                 RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.Scale(offseti, new Vector2(1, switchgravfac)), Vector2.down * switchgravfac, detectRange, LayerMask.GetMask("Platform"));
-
                 if (hit.collider != null)
                 {
-                    if (!canSpecial && !isOnGround)
-                    {
-                        Invoke("restartSpecial", specialWaitTimer);
-                    }
                     isOnGround = true;
                     dummyIsOnGround = true;
+                    canSpecial = true;
                     break;
                 }
                 else
                 {
                     if (isOnGround)
                     {
-                        Invoke("waitForJump", jumpWaitTimer);
+                        Invoke("WaitForJump", jumpWaitTimer);
                         isOnGround = false;
                     }
                 }
@@ -87,18 +88,18 @@ public class Controller : MonoBehaviour
         }
     }
 
-    private void restartSpecial()
+    private void WaitForJump()
     {
-        canSpecial = true;
+        dummyIsOnGround = false;
     }
 
-    public void processJump()
+    public void ProcessJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && dummyIsOnGround)
+        if (dummyIsOnGround)
         {
             Debug.Log("Jumped");
             Vector2 resVec = isGroundDown ? Vector2.up * jumpPow : Vector2.down * jumpPow;
-            rb.AddForce(resVec);
+            rb.AddForce(resVec, ForceMode2D.Impulse);
             dummyIsOnGround = false;
             isOnGround = false;
         }
@@ -123,47 +124,64 @@ public class Controller : MonoBehaviour
 
     }
 
-    private void waitForJump()
+    public void ProcessPower()
     {
-        dummyIsOnGround = false;
+        Debug.Log("Power Use");
+        if (isMale && !isOnGround && canSpecial)
+        {
+            Smash();
+        }
+        else if (!isMale && !isOnGround && canSpecial)
+        {
+            Dash();
+        }
     }
 
-    public void processPower()
+    private void Smash()
     {
-        if(isMale && !isOnGround && canSpecial && Input.GetKeyDown(KeyCode.Space) )
-        {
-            smash();
-        }
-        else if(!isMale && !isOnGround && canSpecial && Input.GetKeyDown(KeyCode.Space))
-        {
-            dash();
-        }
-
-    }
-
-    private void smash()
-    {
-        //rb.AddForce(isGroundDown ? Vector2.up * jumpPow : Vector2.down * jumpPow);
+        Debug.Log("Smash");
+        rb.AddForce(isGroundDown ? Vector2.up * jumpPow : Vector2.down * jumpPow);
         canSpecial = false;
         rb.velocity = isGroundDown ? Vector2.down * smashvel : Vector2.up * smashvel;
     }
 
-    private void dash()
+    private void Dash()
     {
+        Debug.Log("Dash");
+        Debug.Log("dir " + lookDirection);
+        Vector2 dashDirection = lookDirection * Vector2.right;
+        Debug.Log("Force is:- " + dashDirection * dashForce + " with Direction " + dashDirection);
+        rb.AddForce(dashDirection * dashForce, ForceMode2D.Impulse);
+        canSpecial = false;
+        Invoke("StopDash", dashDuration);
+    }
 
+    void StopDash()
+    {
+        Vector2 velocity = rb.velocity;
+        velocity.x = 0.0f;
+        rb.velocity = velocity;
     }
 
     public void Move(float horizontal)
     {
         Vector2 velocity = rb.velocity;
-        if (horizontal != 0.0f)
+        if (canSpecial)
         {
-            velocity.x += acceleration * horizontal * Time.fixedDeltaTime;
-            velocity.x = Mathf.Clamp(velocity.x, -maxSpeed, maxSpeed);
-        }
-        else
-        {
-            velocity.x = Mathf.Lerp(velocity.x, 0.0f, friction);
+            if (horizontal != 0.0f)
+            {
+                animator.SetBool("isRunning", true);
+                lookDirection = horizontal / Mathf.Abs(horizontal);
+                velocity.x += acceleration * horizontal * Time.fixedDeltaTime;
+                velocity.x = Mathf.Clamp(velocity.x, -maxSpeed, maxSpeed);
+                if(lookDirection > 0) GetComponentInChildren<SpriteRenderer>().flipX= false; else GetComponentInChildren<SpriteRenderer>().flipX= true; 
+            }
+            else
+            {
+                animator.SetBool("isRunning", false);
+                velocity.x = Mathf.Lerp(velocity.x, 0.0f, friction);
+
+            }
         }
         rb.velocity = velocity;
     }
