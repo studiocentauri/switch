@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Character
   - Platform
+  - Character 2
+  - Character 1
   layers:
   - Default
   - TransparentFX

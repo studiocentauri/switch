@@ -8,21 +8,47 @@ public class InputManager : MonoBehaviour
 
     float horizontal = 0.0f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Character").GetComponent<Controller>();
-    }
+    [SerializeField] Controller[] playerControllers;
 
-    // Update is called once per frame
+    [SerializeField] Transform[] playerTransforms;
+
+    [SerializeField] int currentPlayer; // active player identifier
+
+    [SerializeField] bool isInSync; // other player is in sync with the player
+
+    float timer = 0f; // to lerp other player's position
+
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            playerControllers[currentPlayer].rb.velocity = Vector2.zero; // stops the current player
+            currentPlayer = 1 - currentPlayer; // switches the player
+        }
     }
 
     void FixedUpdate()
     {
-        player.Move(horizontal);
+        playerControllers[currentPlayer].Move(horizontal);
+        if (isInSync) // follow the player
+        {
+            var targetPos = new Vector2(playerTransforms[currentPlayer].position.x, playerTransforms[1 - currentPlayer].position.y);
+            var currentPos = new Vector2(playerTransforms[1 - currentPlayer].position.x, playerTransforms[1 - currentPlayer].position.y);
+            if (Vector2.Distance(targetPos,currentPos) > 0.1f)
+            {
+                playerTransforms[1 - currentPlayer].position = Vector2.MoveTowards(playerTransforms[1 - currentPlayer].position, targetPos, 15f * Time.deltaTime);
+            }
+        }
+        else
+        {
+            playerControllers[1 - currentPlayer].rb.velocity = Vector2.zero; // stops the other player
+        }
         horizontal = 0.0f;
+    }
+
+    public void SetSync()
+    {
+        isInSync = !isInSync;
     }
 }
