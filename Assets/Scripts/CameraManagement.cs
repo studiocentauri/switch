@@ -1,17 +1,21 @@
-using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
-public class CinemachineShake : MonoBehaviour
-{   
-    public static CinemachineShake Instance { get; private set; }
-    private CinemachineVirtualCamera cinemachineVirtualCamera;
+public class CameraManagement : MonoBehaviour
+{
+    public static CameraManagement Instance { get; private set; }
+    public CinemachineVirtualCamera cinemachineVirtualCamera;
     private float shakeTimer;
-    // Start is
-    // called before the first frame update
 
     private void Awake()
+    {
+        Instance = this;
+        cinemachineVirtualCamera= GetComponent<CinemachineVirtualCamera>();
+    }
+
+    private void Start()
     {
         Instance = this;
         cinemachineVirtualCamera= GetComponent<CinemachineVirtualCamera>();
@@ -23,10 +27,6 @@ public class CinemachineShake : MonoBehaviour
 
         cinemachineBasicMultiChannelPerlin.m_AmplitudeGain= intensity;
         shakeTimer= time;
-    }
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
@@ -44,4 +44,3 @@ public class CinemachineShake : MonoBehaviour
         }
     }
 }
-

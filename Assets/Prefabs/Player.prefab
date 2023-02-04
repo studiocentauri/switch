@@ -57,6 +57,8 @@ MonoBehaviour:
   - {x: -2.25, y: -2}
   - {x: 2.25, y: -2}
   detectRange: 1
+  isOnGround: 0
+  dummyIsOnGround: 0
   gravity: 50
   jumpPow: 120
   jumpWaitTimer: 0.5
@@ -183,7 +185,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: a9d5b630a697deb409436503d472a7ee, type: 3}
   m_Color: {r: 0, g: 0.43639326, b: 1, a: 1}
   m_FlipX: 0
