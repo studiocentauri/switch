@@ -28,8 +28,6 @@
       "dependencies": {
         "com.unity.test-framework": "1.1.31"
       },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.collab-proxy": {
       "version": "2.0.0",
       "depth": 0,
@@ -121,13 +119,8 @@
       "dependencies": {
         "com.unity.mathematics": "1.2.1",
         "com.unity.burst": "1.8.2",
-<<<<<<< HEAD
-        "com.unity.render-pipelines.core": "12.1.8",
-        "com.unity.shadergraph": "12.1.8"
-=======
         "com.unity.render-pipelines.core": "12.1.10",
         "com.unity.shadergraph": "12.1.10"
->>>>>>> 3f51ea0 (Added basic Jump and Gravity.)
       }
     },
     "com.unity.searcher": {
@@ -479,4 +472,4 @@
       }
     }
   }
-}
+}}
