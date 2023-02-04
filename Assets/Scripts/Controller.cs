@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
+using System.Drawing.Drawing2D;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -15,66 +17,90 @@ public class Controller : MonoBehaviour
 
     public bool isGroundDown = true;
 
-    public Vector2[] offset;
+    public List<Vector2> offset;
 
-    public float detectRange = 0.5f;
+    public float detectRange = 0.1f;
 
-    private bool isOnGround = true;
+    public bool isOnGround = false;
+
+    public bool dummyIsOnGround = false;
 
     private Vector2 gravityDir = new Vector2(0, 1);
 
-    public float gravity = 10;
+    public float gravity = 50;
 
-    public float jumpPow = 60;
+    public float jumpPow = 120;
 
-    public float jumpWaitTimer = 5f;
+    public float jumpWaitTimer = 0.2f;
 
-    private bool wasOnGround = true;
+    public float specialWaitTimer = 0.2f;
+
+    public float smashDelatTimer = 0.2f;
+
+    private bool canSpecial = false;
+
+    public bool isMale = true;
+
+    public float smashvel = 30f;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
-    {
-
-    }
-
     public void FixedUpdate()
     {
 
         DoGravity();
+        
+        int switchgravfac = isGroundDown ? 1 : -1;
 
-
-        foreach (Vector2 offseti in offset)
+        if (rb.velocity.y * switchgravfac < 0)
         {
-            int switchgravfac = isGroundDown ? 1 : -1;
-            Debug.DrawRay(rb.position + Vector2.Scale(offseti, new Vector2(1, switchgravfac)), Vector2.down * detectRange*switchgravfac, Color.black, 0.1f);
-            RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.Scale(offseti, new Vector2(1, switchgravfac)), Vector2.down*switchgravfac, detectRange, LayerMask.GetMask("Platform"));
-            if (hit.collider != null)
+
+
+            foreach (Vector2 offseti in offset)
             {
-                isOnGround = true;
-                wasOnGround = true;
-                break;
-            }
-            else
-            {
-                if (wasOnGround)
+
+                Debug.DrawRay(rb.position + Vector2.Scale(offseti, new Vector2(1, switchgravfac)), Vector2.down * detectRange * switchgravfac, Color.black, 0.1f);
+                RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.Scale(offseti, new Vector2(1, switchgravfac)), Vector2.down * switchgravfac, detectRange, LayerMask.GetMask("Platform"));
+
+                if (hit.collider != null)
                 {
-                    StartCoroutine(waitForJump(jumpWaitTimer));
-                    Debug.Log("Started Coroutine");
-                    wasOnGround = false;
+                    if (!canSpecial && !isOnGround)
+                    {
+                        Invoke("restartSpecial", specialWaitTimer);
+                    }
+                    isOnGround = true;
+                    dummyIsOnGround = true;
+                    break;
+                }
+                else
+                {
+                    if (isOnGround)
+                    {
+                        Invoke("waitForJump", jumpWaitTimer);
+                        isOnGround = false;
+                    }
                 }
             }
         }
     }
 
+    private void restartSpecial()
+    {
+        canSpecial = true;
+    }
+
     public void processJump()
     {
-        if (Input.GetAxis("Jump") > 0 && isOnGround)
+        if (Input.GetKeyDown(KeyCode.Space) && dummyIsOnGround)
         {
-            rb.AddForce(isGroundDown ? Vector2.up * jumpPow : Vector2.down * jumpPow);
+            Debug.Log("Jumped");
+            Vector2 resVec = isGroundDown ? Vector2.up * jumpPow : Vector2.down * jumpPow;
+            rb.AddForce(resVec);
+            dummyIsOnGround = false;
+            isOnGround = false;
         }
     }
 
@@ -97,10 +123,34 @@ public class Controller : MonoBehaviour
 
     }
 
-    private IEnumerator waitForJump(float waitTime)
+    private void waitForJump()
     {
-        yield return new WaitForSeconds(waitTime);
-        isOnGround = false;
+        dummyIsOnGround = false;
+    }
+
+    public void processPower()
+    {
+        if(isMale && !isOnGround && canSpecial && Input.GetKeyDown(KeyCode.Space) )
+        {
+            smash();
+        }
+        else if(!isMale && !isOnGround && canSpecial && Input.GetKeyDown(KeyCode.Space))
+        {
+            dash();
+        }
+
+    }
+
+    private void smash()
+    {
+        //rb.AddForce(isGroundDown ? Vector2.up * jumpPow : Vector2.down * jumpPow);
+        canSpecial = false;
+        rb.velocity = isGroundDown ? Vector2.down * smashvel : Vector2.up * smashvel;
+    }
+
+    private void dash()
+    {
+
     }
 
     public void Move(float horizontal)

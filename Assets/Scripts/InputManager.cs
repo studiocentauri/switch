@@ -16,8 +16,6 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] bool isInSync; // other player is in sync with the player
 
-    float timer = 0f; // to lerp other player's position
-
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -34,6 +32,7 @@ public class InputManager : MonoBehaviour
     {
         playerControllers[currentPlayer].Move(horizontal);
         playerControllers[currentPlayer].processJump();
+        playerControllers[currentPlayer].processPower();
         if (isInSync) // follow the player
         {
             var targetPos = new Vector2(playerTransforms[currentPlayer].position.x, playerTransforms[1 - currentPlayer].position.y);

@@ -916,10 +916,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Character 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6207099295087118591, guid: 8be2f846ed8febb43a452ab901794b29, type: 3}
-      propertyPath: jumpWaitTimer
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8be2f846ed8febb43a452ab901794b29, type: 3}
 --- !u!114 &6207099295771848396 stripped
