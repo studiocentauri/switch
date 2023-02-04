@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  acceleration: 10000
-  maxSpeed: 15
+  acceleration: 12500
+  maxSpeed: 20
   friction: 1
   isGroundDown: 1
   offset:
@@ -57,13 +57,15 @@ MonoBehaviour:
   - {x: -2.25, y: -2}
   - {x: 2.25, y: -2}
   detectRange: 1
-  gravity: 50
-  jumpPow: 120
+  isOnGround: 0
+  dummyIsOnGround: 0
+  gravity: 100
+  jumpPow: 50
   jumpWaitTimer: 0.5
   specialWaitTimer: 0.2
   smashDelatTimer: 0.2
   isMale: 1
-  smashvel: 30
+  smashvel: 100
 --- !u!61 &6207099295087118590
 BoxCollider2D:
   m_ObjectHideFlags: 0
