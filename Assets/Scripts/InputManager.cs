@@ -26,11 +26,14 @@ public class InputManager : MonoBehaviour
             playerControllers[currentPlayer].rb.velocity = Vector2.zero; // stops the current player
             currentPlayer = 1 - currentPlayer; // switches the player
         }
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+            isInSync = !isInSync;
     }
 
     void FixedUpdate()
     {
         playerControllers[currentPlayer].Move(horizontal);
+        playerControllers[currentPlayer].processJump();
         if (isInSync) // follow the player
         {
             var targetPos = new Vector2(playerTransforms[currentPlayer].position.x, playerTransforms[1 - currentPlayer].position.y);
@@ -45,10 +48,5 @@ public class InputManager : MonoBehaviour
             playerControllers[1 - currentPlayer].rb.velocity = Vector2.zero; // stops the other player
         }
         horizontal = 0.0f;
-    }
-
-    public void SetSync()
-    {
-        isInSync = !isInSync;
     }
 }

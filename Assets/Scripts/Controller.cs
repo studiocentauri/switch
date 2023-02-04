@@ -46,7 +46,6 @@ public class Controller : MonoBehaviour
 
         DoGravity();
 
-        processJump();
 
         foreach (Vector2 offseti in offset)
         {
