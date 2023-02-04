@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
@@ -20,6 +21,16 @@ public class Controller : MonoBehaviour
 
     private bool isOnGround = true;
 
+    private Vector2 gravityDir = new Vector2(0, 1);
+
+    public float gravity = 10;
+
+    public float jumpPow = 60;
+
+    public float jumpWaitTimer = 5f;
+
+    private bool wasOnGround = true;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,33 +38,70 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
-        if (isOnGround)
-        {
-            Debug.Log("Ground");
-        }
-        else
-        {
-            Debug.Log("Air");
-        }
+
     }
 
     public void FixedUpdate()
     {
+
+        DoGravity();
+
+        processJump();
+
         foreach (Vector2 offseti in offset)
         {
-            Debug.DrawRay(rb.position + offseti, Vector2.down * detectRange, Color.black, 0.1f);
-            RaycastHit2D hit = Physics2D.Raycast(rb.position + offseti, Vector2.down, detectRange, LayerMask.GetMask("Platform"));
+            int switchgravfac = isGroundDown ? 1 : -1;
+            Debug.DrawRay(rb.position + Vector2.Scale(offseti, new Vector2(1, switchgravfac)), Vector2.down * detectRange*switchgravfac, Color.black, 0.1f);
+            RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.Scale(offseti, new Vector2(1, switchgravfac)), Vector2.down*switchgravfac, detectRange, LayerMask.GetMask("Platform"));
             if (hit.collider != null)
             {
-                Debug.Log("A: " + hit.collider.gameObject.tag + " B:" + hit.collider.gameObject.name);
                 isOnGround = true;
+                wasOnGround = true;
                 break;
             }
             else
             {
-                isOnGround = false;
+                if (wasOnGround)
+                {
+                    StartCoroutine(waitForJump(jumpWaitTimer));
+                    Debug.Log("Started Coroutine");
+                    wasOnGround = false;
+                }
             }
         }
+    }
+
+    public void processJump()
+    {
+        if (Input.GetAxis("Jump") > 0 && isOnGround)
+        {
+            rb.AddForce(isGroundDown ? Vector2.up * jumpPow : Vector2.down * jumpPow);
+        }
+    }
+
+    public void DoGravity()
+    {
+        if (isGroundDown)
+        {
+            if (!isOnGround)
+            {
+                rb.AddForce(gravity * gravityDir * -1);
+            }
+        }
+        else
+        {
+            if (!isOnGround)
+            {
+                rb.AddForce(gravityDir * gravity);
+            }
+        }
+
+    }
+
+    private IEnumerator waitForJump(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        isOnGround = false;
     }
 
     public void Move(float horizontal)
