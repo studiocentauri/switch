@@ -51,9 +51,12 @@ public class Controller : MonoBehaviour
 
     public float dashDuration = 0.2f;
 
+    Animator animator;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
         switchgravfac = isGroundDown ? 1 : -1;
     }
 
@@ -167,13 +170,15 @@ public class Controller : MonoBehaviour
         {
             if (horizontal != 0.0f)
             {
+                animator.SetBool("isRunning", true);
                 lookDirection = horizontal / Mathf.Abs(horizontal);
                 velocity.x += acceleration * horizontal * Time.fixedDeltaTime;
                 velocity.x = Mathf.Clamp(velocity.x, -maxSpeed, maxSpeed);
+                if(lookDirection > 0) GetComponentInChildren<SpriteRenderer>().flipX= false; else GetComponentInChildren<SpriteRenderer>().flipX= true; 
             }
             else
             {
-
+                animator.SetBool("isRunning", false);
                 velocity.x = Mathf.Lerp(velocity.x, 0.0f, friction);
 
             }
