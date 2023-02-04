@@ -10,7 +10,10 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] Transform[] playerTransforms;
 
-    [SerializeField] int currentPlayer; // active player identifier
+    public int currentPlayer; // active player identifier 0 for top and 1 for bottom.
+
+    public CameraManagement cammale;
+    public CameraManagement camfemale;
 
     [SerializeField] bool isInSync; // other player is in sync with the player
 
@@ -27,6 +30,18 @@ public class InputManager : MonoBehaviour
         {
             playerControllers[currentPlayer].rb.velocity = Vector2.zero; // stops the current player
             currentPlayer = 1 - currentPlayer; // switches the player
+
+            if(currentPlayer == 0)
+            {
+                cammale.cinemachineVirtualCamera.Priority = 1;
+                camfemale.cinemachineVirtualCamera.Priority = 0;
+            }
+            else
+            {
+                cammale.cinemachineVirtualCamera.Priority=0;
+                camfemale.cinemachineVirtualCamera.Priority = 1;
+            }
+
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
