@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
+    private PlayerControls controls;
+    
     float horizontal = 0.0f;
 
     [SerializeField] Controller[] playerControllers;
@@ -14,25 +17,38 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] bool isInSync; // other player is in sync with the player
 
+    private void Awake()
+    {
+        controls = new PlayerControls();
+        controls.InGame.Jump.performed += _ => Jump();
+        controls.InGame.Switch.performed += _ => Switch();
+        controls.InGame.Sync.performed += _ => Sync();
+    }
+
+    private void Jump()
+    {
+        playerControllers[currentPlayer].ProcessPower();
+        playerControllers[currentPlayer].ProcessJump();
+    }
+
+    private void Switch()
+    {
+        playerControllers[currentPlayer].rb.velocity = Vector2.zero; // stops the current player
+        currentPlayer = 1 - currentPlayer; // switches the player
+    }
+
+    private void Sync()
+    {
+        isInSync = !isInSync;
+    }
+
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            playerControllers[currentPlayer].ProcessPower();
-            playerControllers[currentPlayer].ProcessJump();
-
-        }
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            playerControllers[currentPlayer].rb.velocity = Vector2.zero; // stops the current player
-            currentPlayer = 1 - currentPlayer; // switches the player
-        }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            isInSync = !isInSync;
-        }
+        // horizontal = Input.GetAxisRaw("Horizontal");
+        horizontal = controls.InGame.Movement.ReadValue<float>();
     }
+
+
 
     void FixedUpdate()
     {
