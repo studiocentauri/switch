@@ -47,15 +47,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd116ffdeaec28e45aff3e71804538ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 10000
-  maxSpeed: 15
+  rb: {fileID: 0}
+  acceleration: 12500
+  maxSpeed: 20
   friction: 1
   isGroundDown: 1
   offset:
-  - {x: 0, y: -1}
-  - {x: -2.25, y: -1}
-  - {x: 2.25, y: -1}
-  detectRange: 3
+  - {x: 0, y: -2}
+  - {x: -2.25, y: -2}
+  - {x: 2.25, y: -2}
+  detectRange: 1
+  isOnGround: 0
+  dummyIsOnGround: 0
+  gravity: 100
+  jumpPow: 50
+  jumpWaitTimer: 0.5
+  specialWaitTimer: 0.2
+  smashDelatTimer: 0.2
+  isMale: 1
+  smashvel: 100
+  dashForce: 100
+  dashDuration: 0.15
 --- !u!61 &6207099295087118590
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -102,7 +114,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &6207099296606992176
 GameObject:
   m_ObjectHideFlags: 0
