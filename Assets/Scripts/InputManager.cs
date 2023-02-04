@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    private PlayerControls controls;
     
     float horizontal = 0.0f;
 
@@ -22,28 +21,19 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] bool isInSync; // other player is in sync with the player
 
-    private void Awake()
+    public void OnMove(InputValue value)
     {
-        controls = new PlayerControls();
-        controls.InGame.Jump.performed += _ => Jump();
-        controls.InGame.Switch.performed += _ => Switch();
-        controls.InGame.Sync.performed += _ => Sync();
-
-        if(Input.GetKeyDown(KeyCode.M))
-        {
-            obstacleSwitch.InitiateSwitch();
-        }
+        var dir = value.Get<Vector2>();
+        horizontal = dir.x;
     }
 
-    
-
-    private void Jump()
+    public void OnJump()
     {
         playerControllers[currentPlayer].ProcessPower();
         playerControllers[currentPlayer].ProcessJump(1f);
     }
 
-    private void Switch()
+    public void OnSwitch()
     {
         playerControllers[currentPlayer].rb.velocity = new Vector2(0, playerControllers[currentPlayer].rb.velocity.y); // stops the current player
         currentPlayer = 1 - currentPlayer; // switches the player
@@ -60,18 +50,10 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    private void Sync()
+    public void OnSync()
     {
         isInSync = !isInSync;
     }
-
-    void Update()
-    {
-        // horizontal = Input.GetAxisRaw("Horizontal");
-        horizontal = controls.InGame.Movement.ReadValue<float>();
-    }
-
-
 
     void FixedUpdate()
     {
@@ -92,7 +74,7 @@ public class InputManager : MonoBehaviour
             vel.x = 0; ; // stops the other player
             playerControllers[1 - currentPlayer].rb.velocity = vel;
         }
-        horizontal = 0.0f;
+        // horizontal = 0.0f;
     }
 
     public void ApplyGroundPound(float gp_x) {
