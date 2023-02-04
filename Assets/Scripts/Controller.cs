@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
+using System.Drawing.Drawing2D;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -15,66 +17,88 @@ public class Controller : MonoBehaviour
 
     public bool isGroundDown = true;
 
-    public Vector2[] offset;
+    public List<Vector2> offset;
 
-    public float detectRange = 0.5f;
+    public float detectRange = 0.1f;
 
-    private bool isOnGround = true;
+    public bool isOnGround = false;
+
+    public bool dummyIsOnGround = false;
 
     private Vector2 gravityDir = new Vector2(0, 1);
 
-    public float gravity = 10;
+    public float gravity = 50;
 
-    public float jumpPow = 60;
+    public float jumpPow = 120;
 
-    public float jumpWaitTimer = 5f;
+    public float jumpWaitTimer = 0.2f;
 
-    private bool wasOnGround = true;
+    public float specialWaitTimer = 0.2f;
+
+    public float smashDelatTimer = 0.2f;
+
+    private bool canSpecial = false;
+
+    public bool isMale = true;
+
+    public float smashvel = 30f;
+
+    int switchgravfac;
+
+    float lookDirection = 1;
+
+    public float dashForce = 20.0f;
+
+    public float dashDuration = 0.2f;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-    }
-
-    void Update()
-    {
-
+        switchgravfac = isGroundDown ? 1 : -1;
     }
 
     public void FixedUpdate()
     {
-
         DoGravity();
-
-
-        foreach (Vector2 offseti in offset)
+        if (rb.velocity.y * switchgravfac <= 0.01f)
         {
-            int switchgravfac = isGroundDown ? 1 : -1;
-            Debug.DrawRay(rb.position + Vector2.Scale(offseti, new Vector2(1, switchgravfac)), Vector2.down * detectRange*switchgravfac, Color.black, 0.1f);
-            RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.Scale(offseti, new Vector2(1, switchgravfac)), Vector2.down*switchgravfac, detectRange, LayerMask.GetMask("Platform"));
-            if (hit.collider != null)
+            foreach (Vector2 offseti in offset)
             {
-                isOnGround = true;
-                wasOnGround = true;
-                break;
-            }
-            else
-            {
-                if (wasOnGround)
+                Debug.DrawRay(rb.position + Vector2.Scale(offseti, new Vector2(1, switchgravfac)), Vector2.down * detectRange * switchgravfac, Color.black, 0.1f);
+                RaycastHit2D hit = Physics2D.Raycast(rb.position + Vector2.Scale(offseti, new Vector2(1, switchgravfac)), Vector2.down * switchgravfac, detectRange, LayerMask.GetMask("Platform"));
+                if (hit.collider != null)
                 {
-                    StartCoroutine(waitForJump(jumpWaitTimer));
-                    Debug.Log("Started Coroutine");
-                    wasOnGround = false;
+                    isOnGround = true;
+                    dummyIsOnGround = true;
+                    canSpecial = true;
+                    break;
+                }
+                else
+                {
+                    if (isOnGround)
+                    {
+                        Invoke("WaitForJump", jumpWaitTimer);
+                        isOnGround = false;
+                    }
                 }
             }
         }
     }
 
-    public void processJump()
+    private void WaitForJump()
     {
-        if (Input.GetAxis("Jump") > 0 && isOnGround)
+        dummyIsOnGround = false;
+    }
+
+    public void ProcessJump()
+    {
+        if (dummyIsOnGround)
         {
-            rb.AddForce(isGroundDown ? Vector2.up * jumpPow : Vector2.down * jumpPow);
+            Debug.Log("Jumped");
+            Vector2 resVec = isGroundDown ? Vector2.up * jumpPow : Vector2.down * jumpPow;
+            rb.AddForce(resVec, ForceMode2D.Impulse);
+            dummyIsOnGround = false;
+            isOnGround = false;
         }
     }
 
@@ -97,23 +121,62 @@ public class Controller : MonoBehaviour
 
     }
 
-    private IEnumerator waitForJump(float waitTime)
+    public void ProcessPower()
     {
-        yield return new WaitForSeconds(waitTime);
-        isOnGround = false;
+        Debug.Log("Power Use");
+        if (isMale && !isOnGround && canSpecial)
+        {
+            Smash();
+        }
+        else if (!isMale && !isOnGround && canSpecial)
+        {
+            Dash();
+        }
+    }
+
+    private void Smash()
+    {
+        Debug.Log("Smash");
+        rb.AddForce(isGroundDown ? Vector2.up * jumpPow : Vector2.down * jumpPow);
+        canSpecial = false;
+        rb.velocity = isGroundDown ? Vector2.down * smashvel : Vector2.up * smashvel;
+    }
+
+    private void Dash()
+    {
+        Debug.Log("Dash");
+        Debug.Log("dir " + lookDirection);
+        Vector2 dashDirection = lookDirection * Vector2.right;
+        Debug.Log("Force is:- " + dashDirection * dashForce + " with Direction " + dashDirection);
+        rb.AddForce(dashDirection * dashForce, ForceMode2D.Impulse);
+        canSpecial = false;
+        Invoke("StopDash", dashDuration);
+    }
+
+    void StopDash()
+    {
+        Vector2 velocity = rb.velocity;
+        velocity.x = 0.0f;
+        rb.velocity = velocity;
     }
 
     public void Move(float horizontal)
     {
         Vector2 velocity = rb.velocity;
-        if (horizontal != 0.0f)
+        if (canSpecial)
         {
-            velocity.x += acceleration * horizontal * Time.fixedDeltaTime;
-            velocity.x = Mathf.Clamp(velocity.x, -maxSpeed, maxSpeed);
-        }
-        else
-        {
-            velocity.x = Mathf.Lerp(velocity.x, 0.0f, friction);
+            if (horizontal != 0.0f)
+            {
+                lookDirection = horizontal / Mathf.Abs(horizontal);
+                velocity.x += acceleration * horizontal * Time.fixedDeltaTime;
+                velocity.x = Mathf.Clamp(velocity.x, -maxSpeed, maxSpeed);
+            }
+            else
+            {
+
+                velocity.x = Mathf.Lerp(velocity.x, 0.0f, friction);
+
+            }
         }
         rb.velocity = velocity;
     }
