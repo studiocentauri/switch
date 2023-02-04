@@ -66,6 +66,8 @@ MonoBehaviour:
   smashDelatTimer: 0.2
   isMale: 1
   smashvel: 100
+  dashForce: 100
+  dashDuration: 0.15
 --- !u!61 &6207099295087118590
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -112,7 +114,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &6207099296606992176
 GameObject:
   m_ObjectHideFlags: 0

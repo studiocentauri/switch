@@ -45,6 +45,11 @@ public class Controller : MonoBehaviour
 
     int switchgravfac;
 
+    float lookDirection = 1;
+
+    public float dashForce = 20.0f;
+
+    public float dashDuration = 0.2f;
 
     void Awake()
     {
@@ -113,6 +118,7 @@ public class Controller : MonoBehaviour
                 rb.AddForce(gravityDir * gravity);
             }
         }
+
     }
 
     public void ProcessPower()
@@ -138,20 +144,39 @@ public class Controller : MonoBehaviour
 
     private void Dash()
     {
+        Debug.Log("Dash");
+        Debug.Log("dir " + lookDirection);
+        Vector2 dashDirection = lookDirection * Vector2.right;
+        Debug.Log("Force is:- " + dashDirection * dashForce + " with Direction " + dashDirection);
+        rb.AddForce(dashDirection * dashForce, ForceMode2D.Impulse);
+        canSpecial = false;
+        Invoke("StopDash", dashDuration);
+    }
 
+    void StopDash()
+    {
+        Vector2 velocity = rb.velocity;
+        velocity.x = 0.0f;
+        rb.velocity = velocity;
     }
 
     public void Move(float horizontal)
     {
         Vector2 velocity = rb.velocity;
-        if (horizontal != 0.0f)
+        if (canSpecial)
         {
-            velocity.x += acceleration * horizontal * Time.fixedDeltaTime;
-            velocity.x = Mathf.Clamp(velocity.x, -maxSpeed, maxSpeed);
-        }
-        else
-        {
-            velocity.x = Mathf.Lerp(velocity.x, 0.0f, friction);
+            if (horizontal != 0.0f)
+            {
+                lookDirection = horizontal / Mathf.Abs(horizontal);
+                velocity.x += acceleration * horizontal * Time.fixedDeltaTime;
+                velocity.x = Mathf.Clamp(velocity.x, -maxSpeed, maxSpeed);
+            }
+            else
+            {
+
+                velocity.x = Mathf.Lerp(velocity.x, 0.0f, friction);
+
+            }
         }
         rb.velocity = velocity;
     }
