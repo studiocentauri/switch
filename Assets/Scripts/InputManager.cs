@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
+    private PlayerControls controls;
+    
     float horizontal = 0.0f;
 
     [SerializeField] Controller[] playerControllers;
@@ -19,43 +22,56 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] bool isInSync; // other player is in sync with the player
 
-    void Update()
+    private void Awake()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            playerControllers[currentPlayer].ProcessPower();
-            playerControllers[currentPlayer].ProcessJump(1f);
+        controls = new PlayerControls();
+        controls.InGame.Jump.performed += _ => Jump();
+        controls.InGame.Switch.performed += _ => Switch();
+        controls.InGame.Sync.performed += _ => Sync();
 
-        }
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {  
-            Vector2 temp = playerControllers[currentPlayer].rb.velocity;
-            temp.x = 0;
-            playerControllers[currentPlayer].rb.velocity = temp; // stops the x velocity of the current player
-            currentPlayer = 1 - currentPlayer; // switches the player
-
-            if(currentPlayer == 0)
-            {
-                cammale.cinemachineVirtualCamera.Priority = 1;
-                camfemale.cinemachineVirtualCamera.Priority = 0;
-            }
-            else
-            {
-                cammale.cinemachineVirtualCamera.Priority=0;
-                camfemale.cinemachineVirtualCamera.Priority = 1;
-            }
-
-        }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            isInSync = !isInSync;
-        }
         if(Input.GetKeyDown(KeyCode.M))
         {
             obstacleSwitch.InitiateSwitch();
         }
     }
+
+    
+
+    private void Jump()
+    {
+        playerControllers[currentPlayer].ProcessPower();
+        playerControllers[currentPlayer].ProcessJump(1f);
+    }
+
+    private void Switch()
+    {
+        playerControllers[currentPlayer].rb.velocity = new Vector2(0, playerControllers[currentPlayer].rb.velocity.y); // stops the current player
+        currentPlayer = 1 - currentPlayer; // switches the player
+        
+        if(currentPlayer == 0)
+        {
+            cammale.cinemachineVirtualCamera.Priority = 1;
+            camfemale.cinemachineVirtualCamera.Priority = 0;
+        }
+        else
+        {
+            cammale.cinemachineVirtualCamera.Priority=0;
+            camfemale.cinemachineVirtualCamera.Priority = 1;
+        }
+    }
+
+    private void Sync()
+    {
+        isInSync = !isInSync;
+    }
+
+    void Update()
+    {
+        // horizontal = Input.GetAxisRaw("Horizontal");
+        horizontal = controls.InGame.Movement.ReadValue<float>();
+    }
+
+
 
     void FixedUpdate()
     {
