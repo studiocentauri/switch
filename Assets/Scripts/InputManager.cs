@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
 
     public CameraManagement cammale;
     public CameraManagement camfemale;
+    public ObstacleSwitch obstacleSwitch;
 
     [SerializeField] bool isInSync; // other player is in sync with the player
 
@@ -49,6 +50,10 @@ public class InputManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             isInSync = !isInSync;
+        }
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            obstacleSwitch.InitiateSwitch();
         }
     }
 
