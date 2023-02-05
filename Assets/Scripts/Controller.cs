@@ -40,6 +40,7 @@ public class Controller : MonoBehaviour
     private bool canSpecial = false;
 
     public bool isMale = true;
+    private bool isSmashing = false;
 
     public float smashvel = 30f;
 
@@ -74,6 +75,13 @@ public class Controller : MonoBehaviour
                     isOnGround = true;
                     dummyIsOnGround = true;
                     canSpecial = true;
+
+                    // apply camera shake if ground is touched after smash
+                    if(isSmashing) {
+                        isSmashing = false;
+                        CameraManagement.Instance.ShakeCamera(10f, .3f);
+                    }
+
                     break;
                 }
                 else
@@ -143,6 +151,7 @@ public class Controller : MonoBehaviour
         rb.AddForce(isGroundDown ? Vector2.up * jumpPow : Vector2.down * jumpPow);
         canSpecial = false;
         rb.velocity = isGroundDown ? Vector2.down * smashvel : Vector2.up * smashvel;
+        isSmashing = true;
     }
 
     private void Dash()
