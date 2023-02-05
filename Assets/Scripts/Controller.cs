@@ -53,11 +53,12 @@ public class Controller : MonoBehaviour
     public float dashDuration = 0.2f;
 
     Animator animator;
-
+    private InputManager inputManager;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        inputManager = GameObject.Find("GameManager").GetComponent<InputManager>();
         switchgravfac = isGroundDown ? 1 : -1;
     }
 
@@ -80,6 +81,7 @@ public class Controller : MonoBehaviour
                     if(isSmashing) {
                         isSmashing = false;
                         CameraManagement.Instance.ShakeCamera(10f, .3f);
+                        inputManager.ApplyGroundPound(hit.point.x);
                     }
 
                     break;
@@ -101,12 +103,12 @@ public class Controller : MonoBehaviour
         dummyIsOnGround = false;
     }
 
-    public void ProcessJump()
+    public void ProcessJump(float jumpFactor)
     {
         if (dummyIsOnGround)
         {
             Debug.Log("Jumped");
-            Vector2 resVec = isGroundDown ? Vector2.up * jumpPow : Vector2.down * jumpPow;
+            Vector2 resVec = isGroundDown ? Vector2.up * jumpPow * jumpFactor : Vector2.down * jumpPow * jumpFactor;
             rb.AddForce(resVec, ForceMode2D.Impulse);
             dummyIsOnGround = false;
             isOnGround = false;
