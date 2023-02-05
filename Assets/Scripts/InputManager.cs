@@ -55,6 +55,11 @@ public class InputManager : MonoBehaviour
         isInSync = !isInSync;
     }
 
+    public void OnMapSwitch()
+    {
+        obstacleSwitch.InitiateSwitch();
+    }
+
     void FixedUpdate()
     {
         playerControllers[currentPlayer].Move(horizontal);
