@@ -9,8 +9,12 @@ public class InputManager : MonoBehaviour
     [SerializeField] Controller[] playerControllers;
 
     [SerializeField] Transform[] playerTransforms;
+    [SerializeField] float GROUND_POUND_NORMALIZATION_CONSTANT = 0.3f;
 
-    [SerializeField] int currentPlayer; // active player identifier
+    public int currentPlayer; // active player identifier 0 for top and 1 for bottom.
+
+    public CameraManagement cammale;
+    public CameraManagement camfemale;
 
     [SerializeField] bool isInSync; // other player is in sync with the player
 
@@ -20,13 +24,27 @@ public class InputManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             playerControllers[currentPlayer].ProcessPower();
-            playerControllers[currentPlayer].ProcessJump();
+            playerControllers[currentPlayer].ProcessJump(1f);
 
         }
         if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            playerControllers[currentPlayer].rb.velocity = Vector2.zero; // stops the current player
+        {  
+            Vector2 temp = playerControllers[currentPlayer].rb.velocity;
+            temp.x = 0;
+            playerControllers[currentPlayer].rb.velocity = temp; // stops the x velocity of the current player
             currentPlayer = 1 - currentPlayer; // switches the player
+
+            if(currentPlayer == 0)
+            {
+                cammale.cinemachineVirtualCamera.Priority = 1;
+                camfemale.cinemachineVirtualCamera.Priority = 0;
+            }
+            else
+            {
+                cammale.cinemachineVirtualCamera.Priority=0;
+                camfemale.cinemachineVirtualCamera.Priority = 1;
+            }
+
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -54,5 +72,17 @@ public class InputManager : MonoBehaviour
             playerControllers[1 - currentPlayer].rb.velocity = vel;
         }
         horizontal = 0.0f;
+    }
+
+    public void ApplyGroundPound(float gp_x) {
+        float jumpFactor = 1.2f/Mathf.Pow(Mathf.Abs(playerControllers[1 - currentPlayer].transform.position.x - gp_x), GROUND_POUND_NORMALIZATION_CONSTANT);
+        if(jumpFactor < 0.5f) { jumpFactor = 0f; } 
+        if(playerControllers[currentPlayer].isMale) {
+            playerControllers[1 - currentPlayer].ProcessJump(Mathf.Min(1.2f, jumpFactor));
+        }
+        else {
+            playerControllers[currentPlayer].ProcessJump(Mathf.Min(1.2f, jumpFactor));
+        }
+        
     }
 }

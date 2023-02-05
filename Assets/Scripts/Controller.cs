@@ -40,6 +40,7 @@ public class Controller : MonoBehaviour
     private bool canSpecial = false;
 
     public bool isMale = true;
+    private bool isSmashing = false;
 
     public float smashvel = 30f;
 
@@ -51,9 +52,13 @@ public class Controller : MonoBehaviour
 
     public float dashDuration = 0.2f;
 
+    Animator animator;
+    private InputManager inputManager;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
+        inputManager = GameObject.Find("GameManager").GetComponent<InputManager>();
         switchgravfac = isGroundDown ? 1 : -1;
     }
 
@@ -71,6 +76,14 @@ public class Controller : MonoBehaviour
                     isOnGround = true;
                     dummyIsOnGround = true;
                     canSpecial = true;
+
+                    // apply camera shake if ground is touched after smash
+                    if(isSmashing) {
+                        isSmashing = false;
+                        CameraManagement.Instance.ShakeCamera(10f, .3f);
+                        inputManager.ApplyGroundPound(hit.point.x);
+                    }
+
                     break;
                 }
                 else
@@ -90,12 +103,12 @@ public class Controller : MonoBehaviour
         dummyIsOnGround = false;
     }
 
-    public void ProcessJump()
+    public void ProcessJump(float jumpFactor)
     {
         if (dummyIsOnGround)
         {
             Debug.Log("Jumped");
-            Vector2 resVec = isGroundDown ? Vector2.up * jumpPow : Vector2.down * jumpPow;
+            Vector2 resVec = isGroundDown ? Vector2.up * jumpPow * jumpFactor : Vector2.down * jumpPow * jumpFactor;
             rb.AddForce(resVec, ForceMode2D.Impulse);
             dummyIsOnGround = false;
             isOnGround = false;
@@ -140,6 +153,7 @@ public class Controller : MonoBehaviour
         rb.AddForce(isGroundDown ? Vector2.up * jumpPow : Vector2.down * jumpPow);
         canSpecial = false;
         rb.velocity = isGroundDown ? Vector2.down * smashvel : Vector2.up * smashvel;
+        isSmashing = true;
     }
 
     private void Dash()
@@ -167,13 +181,15 @@ public class Controller : MonoBehaviour
         {
             if (horizontal != 0.0f)
             {
+                animator.SetBool("isRunning", true);
                 lookDirection = horizontal / Mathf.Abs(horizontal);
                 velocity.x += acceleration * horizontal * Time.fixedDeltaTime;
                 velocity.x = Mathf.Clamp(velocity.x, -maxSpeed, maxSpeed);
+                if(lookDirection > 0) GetComponentInChildren<SpriteRenderer>().flipX= false; else GetComponentInChildren<SpriteRenderer>().flipX= true; 
             }
             else
             {
-
+                animator.SetBool("isRunning", false);
                 velocity.x = Mathf.Lerp(velocity.x, 0.0f, friction);
 
             }
