@@ -78,10 +78,10 @@ public class Controller : MonoBehaviour
                     canSpecial = true;
 
                     rb.gameObject.GetComponentInChildren<Animator>().SetBool("isJump", false);
-                    rb.gameObject.GetComponentInChildren<Animator>().SetBool("isJump", true);
-
+                    rb.gameObject.GetComponentInChildren<Animator>().SetBool("isSmash", false);
                     // apply camera shake if ground is touched after smash
-                    if(isSmashing) {
+                    if (isSmashing)
+                    {
                         isSmashing = false;
                         CameraManagement.Instance.ShakeCamera(10f, .3f);
                         inputManager.ApplyGroundPound(hit.point.x);
@@ -155,6 +155,7 @@ public class Controller : MonoBehaviour
     private void Smash()
     {
         Debug.Log("Smash");
+        rb.gameObject.GetComponentInChildren<Animator>().SetBool("isJump", false);
         rb.gameObject.GetComponentInChildren<Animator>().SetBool("isSmash", true);
         rb.AddForce(isGroundDown ? Vector2.up * jumpPow : Vector2.down * jumpPow);
         canSpecial = false;
@@ -191,7 +192,7 @@ public class Controller : MonoBehaviour
                 lookDirection = horizontal / Mathf.Abs(horizontal);
                 velocity.x += acceleration * horizontal * Time.fixedDeltaTime;
                 velocity.x = Mathf.Clamp(velocity.x, -maxSpeed, maxSpeed);
-                if(lookDirection > 0) GetComponentInChildren<SpriteRenderer>().flipX= false; else GetComponentInChildren<SpriteRenderer>().flipX= true; 
+                if (lookDirection > 0) GetComponentInChildren<SpriteRenderer>().flipX = false; else GetComponentInChildren<SpriteRenderer>().flipX = true;
             }
             else
             {
