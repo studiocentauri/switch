@@ -77,6 +77,9 @@ public class Controller : MonoBehaviour
                     dummyIsOnGround = true;
                     canSpecial = true;
 
+                    rb.gameObject.GetComponentInChildren<Animator>().SetBool("isJump", false);
+                    rb.gameObject.GetComponentInChildren<Animator>().SetBool("isJump", true);
+
                     // apply camera shake if ground is touched after smash
                     if(isSmashing) {
                         isSmashing = false;
@@ -112,6 +115,8 @@ public class Controller : MonoBehaviour
             rb.AddForce(resVec, ForceMode2D.Impulse);
             dummyIsOnGround = false;
             isOnGround = false;
+
+            rb.gameObject.GetComponentInChildren<Animator>().SetBool("isJump", true);
         }
     }
 
@@ -150,6 +155,7 @@ public class Controller : MonoBehaviour
     private void Smash()
     {
         Debug.Log("Smash");
+        rb.gameObject.GetComponentInChildren<Animator>().SetBool("isSmash", true);
         rb.AddForce(isGroundDown ? Vector2.up * jumpPow : Vector2.down * jumpPow);
         canSpecial = false;
         rb.velocity = isGroundDown ? Vector2.down * smashvel : Vector2.up * smashvel;
