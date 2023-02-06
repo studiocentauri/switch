@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
+    
     float horizontal = 0.0f;
 
     [SerializeField] Controller[] playerControllers;
@@ -15,41 +17,47 @@ public class InputManager : MonoBehaviour
 
     public CameraManagement cammale;
     public CameraManagement camfemale;
+    public ObstacleSwitch obstacleSwitch;
 
     [SerializeField] bool isInSync; // other player is in sync with the player
 
-    void Update()
+    public void OnMove(InputValue value)
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-        if (Input.GetKeyDown(KeyCode.Space))
+        var dir = value.Get<Vector2>();
+        horizontal = dir.x;
+    }
+
+    public void OnJump()
+    {
+        playerControllers[currentPlayer].ProcessPower();
+        playerControllers[currentPlayer].ProcessJump(1f);
+    }
+
+    public void OnSwitch()
+    {
+        playerControllers[currentPlayer].rb.velocity = new Vector2(0, playerControllers[currentPlayer].rb.velocity.y); // stops the current player
+        currentPlayer = 1 - currentPlayer; // switches the player
+        
+        if(currentPlayer == 0)
         {
-            playerControllers[currentPlayer].ProcessPower();
-            playerControllers[currentPlayer].ProcessJump(1f);
-
+            cammale.cinemachineVirtualCamera.Priority = 1;
+            camfemale.cinemachineVirtualCamera.Priority = 0;
         }
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {  
-            Vector2 temp = playerControllers[currentPlayer].rb.velocity;
-            temp.x = 0;
-            playerControllers[currentPlayer].rb.velocity = temp; // stops the x velocity of the current player
-            currentPlayer = 1 - currentPlayer; // switches the player
-
-            if(currentPlayer == 0)
-            {
-                cammale.cinemachineVirtualCamera.Priority = 1;
-                camfemale.cinemachineVirtualCamera.Priority = 0;
-            }
-            else
-            {
-                cammale.cinemachineVirtualCamera.Priority=0;
-                camfemale.cinemachineVirtualCamera.Priority = 1;
-            }
-
-        }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        else
         {
-            isInSync = !isInSync;
+            cammale.cinemachineVirtualCamera.Priority=0;
+            camfemale.cinemachineVirtualCamera.Priority = 1;
         }
+    }
+
+    public void OnSync()
+    {
+        isInSync = !isInSync;
+    }
+
+    public void OnMapSwitch()
+    {
+        obstacleSwitch.InitiateSwitch();
     }
 
     void FixedUpdate()
@@ -71,7 +79,7 @@ public class InputManager : MonoBehaviour
             vel.x = 0; ; // stops the other player
             playerControllers[1 - currentPlayer].rb.velocity = vel;
         }
-        horizontal = 0.0f;
+        // horizontal = 0.0f;
     }
 
     public void ApplyGroundPound(float gp_x) {
