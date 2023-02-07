@@ -25,9 +25,9 @@ public class Controller : MonoBehaviour
 
     public bool dummyIsOnGround = false;
 
-    private Vector2 gravityDir = new Vector2(0, 1);
+    // private Vector2 gravityDir = new Vector2(0, 1);
 
-    public float gravity = 50;
+    public float gravity = 15;
 
     public float jumpPow = 120;
 
@@ -60,11 +60,13 @@ public class Controller : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         inputManager = GameObject.Find("GameManager").GetComponent<InputManager>();
         switchgravfac = isGroundDown ? 1 : -1;
+
+        rb.gravityScale = isMale ? gravity : -gravity;
     }
 
     public void FixedUpdate()
     {
-        DoGravity();
+        // DoGravity();
         if (rb.velocity.y * switchgravfac <= 0.01f)
         {
             foreach (Vector2 offseti in offset)
@@ -125,24 +127,24 @@ public class Controller : MonoBehaviour
         }
     }
 
-    public void DoGravity()
-    {
-        if (isGroundDown)
-        {
-            if (!isOnGround)
-            {
-                rb.AddForce(gravity * gravityDir * -1);
-            }
-        }
-        else
-        {
-            if (!isOnGround)
-            {
-                rb.AddForce(gravityDir * gravity);
-            }
-        }
+    // public void DoGravity()
+    // {
+    //     if (isGroundDown)
+    //     {
+    //         if (!isOnGround)
+    //         {
+    //             rb.AddForce(gravity * gravityDir * -1);
+    //         }
+    //     }
+    //     else
+    //     {
+    //         if (!isOnGround)
+    //         {
+    //             rb.AddForce(gravityDir * gravity);
+    //         }
+    //     }
 
-    }
+    // }
 
     public void ProcessPower()
     {

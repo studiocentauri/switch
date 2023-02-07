@@ -728,9 +728,17 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Character 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6207099295087118589, guid: 8be2f846ed8febb43a452ab901794b29, type: 3}
+      propertyPath: m_GravityScale
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6207099295087118591, guid: 8be2f846ed8febb43a452ab901794b29, type: 3}
       propertyPath: isMale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6207099295087118591, guid: 8be2f846ed8febb43a452ab901794b29, type: 3}
+      propertyPath: gravity
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6207099295087118591, guid: 8be2f846ed8febb43a452ab901794b29, type: 3}
       propertyPath: isGroundDown
@@ -1565,7 +1573,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917968500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -108.16728, y: -1.11552, z: -10}
+  m_LocalPosition: {x: -119.07985, y: -1.13445, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2067,7 +2075,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!95 &951072089
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2084,7 +2092,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &961467453
 GameObject:
   m_ObjectHideFlags: 0
@@ -2457,7 +2465,7 @@ GameObject:
   m_IsActive: 0
 --- !u!95 &1074446599
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2474,7 +2482,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1074446600
 Transform:
   m_ObjectHideFlags: 0
@@ -2704,7 +2712,7 @@ GameObject:
   m_IsActive: 1
 --- !u!95 &1207379475
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2721,7 +2729,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1839735485 &1207379477
 Tilemap:
   m_ObjectHideFlags: 0
@@ -9519,6 +9527,14 @@ PrefabInstance:
     - target: {fileID: 6207099295087118585, guid: 8be2f846ed8febb43a452ab901794b29, type: 3}
       propertyPath: m_TagString
       value: Character 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6207099295087118589, guid: 8be2f846ed8febb43a452ab901794b29, type: 3}
+      propertyPath: m_GravityScale
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6207099295087118591, guid: 8be2f846ed8febb43a452ab901794b29, type: 3}
+      propertyPath: gravity
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8be2f846ed8febb43a452ab901794b29, type: 3}
