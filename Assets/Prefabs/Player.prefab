@@ -52,10 +52,6 @@ MonoBehaviour:
   maxSpeed: 20
   friction: 1
   isGroundDown: 1
-  offset:
-  - {x: 0, y: -2}
-  - {x: -2.25, y: -2}
-  - {x: 2.25, y: -2}
   detectRange: 1
   isOnGround: 0
   dummyIsOnGround: 0
@@ -84,10 +80,10 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: 45e23628e531fbd46a5d2caa39fbffa1, type: 2}
+  m_Material: {fileID: 6200000, guid: a6ff7cead4a12b24b8367d85db69aec4, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &5098185272270477009
 CapsuleCollider2D:

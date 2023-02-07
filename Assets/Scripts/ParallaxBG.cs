@@ -11,6 +11,8 @@ public class ParallaxBG : MonoBehaviour
     private GameObject cam;
     public InputManager manage;
     public float parallax;
+    float prevX;
+    float cntX;
 
     private void Awake()
     {
@@ -24,10 +26,10 @@ public class ParallaxBG : MonoBehaviour
         else cam = camfemale;
 
 
-        float temp = cam.transform.position.x * (1 - parallax);
-        float dist = cam.transform.position.x * parallax;
+        // float temp = cam.transform.position.x * (1 - parallax);
+        // float dist = cam.transform.position.x * parallax;
 
-        transform.position = new Vector3( startpose + dist,transform.position.y, transform.position.z);
+        // transform.position = new Vector3( startpose + dist,transform.position.y, transform.position.z);
         
     }
 
@@ -40,12 +42,25 @@ public class ParallaxBG : MonoBehaviour
         else cam = camfemale;
 
 
-        float temp = cam.transform.position.x * (1 - parallax);
-        float dist = cam.transform.position.x * parallax;
+        cntX = cam.transform.position.x;
 
-        transform.position = new Vector3( Mathf.SmoothStep( transform.position.x, startpose + dist, 0.25f), transform.position.y, transform.position.z);
+        float dist = cntX - prevX;
+        float move = dist * parallax;
 
-        if(temp > startpose + length) { startpose += length; }
-        else if(temp < startpose - length) { startpose -= length; }
+        Vector3 temp = transform.position;
+        temp.x = temp.x + move;
+        transform.position = temp;
+
+
+        // float temp = cam.transform.position.x * (1 - parallax);
+        // float dist = cam.transform.position.x * parallax;
+
+        // // transform.position = new Vector3( Mathf.SmoothStep( transform.position.x, startpose + dist, 0.25f), transform.position.y, transform.position.z);
+        // transform.position = new Vector3(startpose + dist, transform.position.y, transform.position.z);
+
+        // if(temp > startpose + length) { startpose += length; }
+        // else if(temp < startpose - length) { startpose -= length; }
+
+        prevX = cntX;
     }
 }

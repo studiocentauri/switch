@@ -17,7 +17,7 @@ public class Controller : MonoBehaviour
 
     public bool isGroundDown = true;
 
-    public List<Vector2> offset;
+    private List<Vector2> offset;
 
     public float detectRange = 0.1f;
 
@@ -51,6 +51,8 @@ public class Controller : MonoBehaviour
     public float dashForce = 20.0f;
 
     public float dashDuration = 0.2f;
+    private float halfWidth;
+    private float halfHeight;
 
     Animator animator;
     private InputManager inputManager;
@@ -61,13 +63,21 @@ public class Controller : MonoBehaviour
         inputManager = GameObject.Find("GameManager").GetComponent<InputManager>();
         switchgravfac = isGroundDown ? 1 : -1;
 
+        CapsuleCollider2D capsuleCollider2D = GetComponentInChildren<CapsuleCollider2D>();
+        halfWidth = capsuleCollider2D.bounds.size.x/2;
+        halfHeight = capsuleCollider2D.bounds.size.y/2;
+
+        offset = new List<Vector2>();
+
+        offset.Add(new Vector2(0, -halfHeight));
+        offset.Add(new Vector2(halfWidth, -halfHeight));
+        offset.Add(new Vector2(-halfWidth, -halfHeight));
+
         rb.gravityScale = isMale ? gravity : -gravity;
     }
 
     public void FixedUpdate()
     {
-        
-        // DoGravity();
         if (rb.velocity.y * switchgravfac <= 0.01f)
         {
             foreach (Vector2 offseti in offset)
@@ -80,13 +90,9 @@ public class Controller : MonoBehaviour
                     dummyIsOnGround = true;
                     canSpecial = true;
 
-                    if(isGroundDown && transform.position.y < 4.5f)
-                    {
-                        transform.position = new Vector2(transform.position.x, 4.5f);
-                    }
-
                     rb.gameObject.GetComponentInChildren<Animator>().SetBool("isJump", false);
                     rb.gameObject.GetComponentInChildren<Animator>().SetBool("isSmash", false);
+
                     // apply camera shake if ground is touched after smash
                     if (isSmashing)
                     {
@@ -118,7 +124,6 @@ public class Controller : MonoBehaviour
     {
         if (dummyIsOnGround)
         {
-            Debug.Log("Jumped");
             Vector2 resVec = isGroundDown ? Vector2.up * jumpPow * jumpFactor : Vector2.down * jumpPow * jumpFactor;
             rb.AddForce(resVec, ForceMode2D.Impulse);
             dummyIsOnGround = false;
@@ -128,28 +133,8 @@ public class Controller : MonoBehaviour
         }
     }
 
-    // public void DoGravity()
-    // {
-    //     if (isGroundDown)
-    //     {
-    //         if (!isOnGround)
-    //         {
-    //             rb.AddForce(gravity * gravityDir * -1);
-    //         }
-    //     }
-    //     else
-    //     {
-    //         if (!isOnGround)
-    //         {
-    //             rb.AddForce(gravityDir * gravity);
-    //         }
-    //     }
-
-    // }
-
     public void ProcessPower()
     {
-        Debug.Log("Power Use");
         if (isMale && !isOnGround && canSpecial)
         {
             Smash();
@@ -162,7 +147,6 @@ public class Controller : MonoBehaviour
 
     private void Smash()
     {
-        Debug.Log("Smash");
         rb.gameObject.GetComponentInChildren<Animator>().SetBool("isJump", false);
         rb.gameObject.GetComponentInChildren<Animator>().SetBool("isSmash", true);
         rb.AddForce(isGroundDown ? Vector2.up * jumpPow : Vector2.down * jumpPow);
@@ -173,7 +157,6 @@ public class Controller : MonoBehaviour
 
     private void Dash()
     {
-        Debug.Log("Dash");
         Debug.Log("dir " + lookDirection);
         Vector2 dashDirection = lookDirection * Vector2.right;
         Debug.Log("Force is:- " + dashDirection * dashForce + " with Direction " + dashDirection);
