@@ -12,13 +12,26 @@ public class ParallaxBG : MonoBehaviour
     public InputManager manage;
     public float parallax;
 
-    void Start()
+    private void Awake()
     {
         startpose = transform.position.x;
         length = GetComponent<SpriteRenderer>().bounds.size.x;
+
+        if (manage.currentPlayer == 0)
+        {
+            cam = cammale;
+        }
+        else cam = camfemale;
+
+
+        float temp = cam.transform.position.x * (1 - parallax);
+        float dist = cam.transform.position.x * parallax;
+
+        transform.position = new Vector3( startpose + dist,transform.position.y, transform.position.z);
+        
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (manage.currentPlayer == 0)
         {
