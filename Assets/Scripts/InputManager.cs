@@ -19,6 +19,7 @@ public class InputManager : MonoBehaviour
     public CameraManagement camfemale;
     public ObstacleSwitch obstacleSwitch;
     public TileFlip tileflip;
+    public DialogueManager dialogueManager;
 
     [SerializeField] bool isInSync; // other player is in sync with the player
 
@@ -82,6 +83,11 @@ public class InputManager : MonoBehaviour
             Debug.Log(hit2.collider.name);
             Debug.Log("Cant flip now");
         }
+    }
+
+    public void OnNextDialogue()
+    {
+        dialogueManager.DisplayNextSentence();
     }
 
     void FixedUpdate()
