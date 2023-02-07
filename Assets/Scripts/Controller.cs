@@ -77,13 +77,18 @@ public class Controller : MonoBehaviour
                     dummyIsOnGround = true;
                     canSpecial = true;
 
+                    if(isGroundDown && transform.position.y < 4.5f)
+                    {
+                        transform.position = new Vector2(transform.position.x, 4.5f);
+                    }
+
                     rb.gameObject.GetComponentInChildren<Animator>().SetBool("isJump", false);
                     rb.gameObject.GetComponentInChildren<Animator>().SetBool("isSmash", false);
                     // apply camera shake if ground is touched after smash
                     if (isSmashing)
                     {
                         isSmashing = false;
-                        CameraManagement.Instance.ShakeCamera(10f, .3f);
+                        CameraManagement.Instance.ShakeCamera(4f, .2f);
                         inputManager.ApplyGroundPound(hit.point.x);
                     }
 
