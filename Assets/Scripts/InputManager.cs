@@ -18,6 +18,7 @@ public class InputManager : MonoBehaviour
     public CameraManagement cammale;
     public CameraManagement camfemale;
     public ObstacleSwitch obstacleSwitch;
+    public TileFlip tileflip;
 
     [SerializeField] bool isInSync; // other player is in sync with the player
 
@@ -58,6 +59,19 @@ public class InputManager : MonoBehaviour
     public void OnMapSwitch()
     {
         obstacleSwitch.InitiateSwitch();
+
+        Debug.Log(tileflip.transform.rotation.eulerAngles);
+
+        if(tileflip.transform.rotation.eulerAngles.y == 0)
+        {
+            tileflip.gameObject.GetComponent<Animator>().Play("TileFlipTo");
+            Debug.Log("Top");
+        }
+        else
+        {
+            tileflip.gameObject.GetComponent<Animator>().Play("TileFlipFrom");
+            Debug.Log("Bottom");
+        }
     }
 
     void FixedUpdate()

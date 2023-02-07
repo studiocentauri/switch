@@ -15,7 +15,7 @@ public class ObstacleSwitch : MonoBehaviour
         for(int i = 0; i < 2; i++) {
             Transform tmp = this.gameObject.transform.GetChild(i);
             for(int j = 0; j < tmp.gameObject.transform.childCount; j++) {
-                tmp.gameObject.transform.GetChild(j).GetComponent<Animator>().Play("SwitchFade");
+                tmp.gameObject.transform.GetChild(j).GetComponent<Obstacle>().PlayAnimation();
             }
         }
     }
