@@ -66,6 +66,7 @@ public class Controller : MonoBehaviour
 
     public void FixedUpdate()
     {
+        
         // DoGravity();
         if (rb.velocity.y * switchgravfac <= 0.01f)
         {
@@ -190,12 +191,12 @@ public class Controller : MonoBehaviour
 
     public void Move(float horizontal)
     {
+        animator.SetFloat("isRunning", Mathf.Abs(horizontal));
         Vector2 velocity = rb.velocity;
         if (canSpecial)
         {
             if (horizontal != 0.0f)
             {
-                animator.SetBool("isRunning", true);
                 lookDirection = horizontal / Mathf.Abs(horizontal);
                 velocity.x += acceleration * horizontal * Time.fixedDeltaTime;
                 velocity.x = Mathf.Clamp(velocity.x, -maxSpeed, maxSpeed);
@@ -203,7 +204,6 @@ public class Controller : MonoBehaviour
             }
             else
             {
-                animator.SetBool("isRunning", false);
                 velocity.x = Mathf.Lerp(velocity.x, 0.0f, friction);
 
             }
