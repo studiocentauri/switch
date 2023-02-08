@@ -55,7 +55,7 @@ public class InputManager : MonoBehaviour
 
     public void OnSync()
     {
-        isInSync = !isInSync;
+        //isInSync = !isInSync;
     }
 
     public void OnMapSwitch()
