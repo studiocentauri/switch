@@ -10,7 +10,7 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentences;
     public GameObject dialogueCanvas;
     private bool sentenceDone = true;
-    private string name;
+    private string voiceName;
     [SerializeField] float TEXT_DISPLAY_SPEED = 0.05f;
     
     void Start()
@@ -20,7 +20,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
-        dialogueCanvas.SetActive(true);
+        if(dialogueCanvas != null) dialogueCanvas.SetActive(true);
         sentences.Clear();
         sentenceDone = true;
         foreach (string sentence in dialogue.sentences)
@@ -60,10 +60,10 @@ public class DialogueManager : MonoBehaviour
                 dialogueText.text = sentence;
                 break;
             }
-            if(name == "Narrator") {
+            if(voiceName == "Narrator") {
                 AudioManager.instance.PlaySound("Narrator Voice");
             }
-            else if (name == "Ram") {
+            else if (voiceName == "Ram") {
                 AudioManager.instance.PlaySound("Ram Voice");
             }
             yield return new WaitForSeconds(TEXT_DISPLAY_SPEED);
@@ -73,6 +73,12 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        dialogueCanvas.SetActive(false);
+        if(dialogueCanvas != null) dialogueCanvas.SetActive(false);
+    }
+
+
+    public void OnNextDialogue()
+    {
+        DisplayNextSentence();
     }
 }

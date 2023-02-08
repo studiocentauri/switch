@@ -1,0 +1,34 @@
+{
+    "name": "DialogueController",
+    "maps": [
+        {
+            "name": "Dialogue",
+            "id": "f485ab7c-cab3-4251-8794-7d7298e5a8ee",
+            "actions": [
+                {
+                    "name": "NextDialogue",
+                    "type": "Button",
+                    "id": "0844dd4e-c062-47c3-927d-0d21eb8ef2d9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c9836ab4-8486-49df-92f0-463cf4d0ff78",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextDialogue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

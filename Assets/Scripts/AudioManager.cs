@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-
+    [SerializeField] List<AudioMixerGroup> audioMixers;
     [SerializeField] Sound[] sounds; 
     void Awake() {
         if(instance == null) {
@@ -26,6 +27,13 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.loop = s.loop;
             s.source.playOnAwake = false;
+
+            if(!s.isSFX) {
+                s.source.outputAudioMixerGroup = audioMixers[0];
+            }
+            else {
+                s.source.outputAudioMixerGroup = audioMixers[1];
+            }
         }
     }
 
@@ -35,7 +43,16 @@ public class AudioManager : MonoBehaviour
             Debug.Log("Sound: " + name + " not found!");
             return;
         }
-        
+
         s.source.Play();
+    }
+
+
+    public void ChangeMasterVolume() {
+
+    }
+
+    public void ChangeSFXVolume() {
+        
     }
 }
