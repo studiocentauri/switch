@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing.Drawing2D;
+// using System.Diagnostics.Eventing.Reader;
+// using System.Drawing.Drawing2D;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -64,8 +64,8 @@ public class Controller : MonoBehaviour
         switchgravfac = isGroundDown ? 1 : -1;
 
         CapsuleCollider2D capsuleCollider2D = GetComponentInChildren<CapsuleCollider2D>();
-        halfWidth = capsuleCollider2D.bounds.size.x/2;
-        halfHeight = capsuleCollider2D.bounds.size.y/2;
+        halfWidth = capsuleCollider2D.bounds.size.x / 2;
+        halfHeight = capsuleCollider2D.bounds.size.y / 2;
 
         offset = new List<Vector2>();
 
@@ -130,6 +130,7 @@ public class Controller : MonoBehaviour
             isOnGround = false;
 
             rb.gameObject.GetComponentInChildren<Animator>().SetBool("isJump", true);
+            AudioManager.instance.PlaySound("Jump");
         }
     }
 
@@ -164,6 +165,7 @@ public class Controller : MonoBehaviour
         Debug.Log("Force is:- " + dashDirection * dashForce + " with Direction " + dashDirection);
         rb.AddForce(dashDirection * dashForce, ForceMode2D.Impulse);
         canSpecial = false;
+        AudioManager.instance.PlaySound("Dash");
         Invoke("StopDash", dashDuration);
     }
 

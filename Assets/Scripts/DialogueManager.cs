@@ -9,6 +9,8 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     private Queue<string> sentences;
     public GameObject dialogueCanvas;
+    private bool sentenceDone = true;
+    [SerializeField] float TEXT_DISPLAY_SPEED = 0.05f;
     
     void Start()
     {
@@ -19,6 +21,7 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueCanvas.SetActive(true);
         sentences.Clear();
+        sentenceDone = true;
         foreach (string sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);
@@ -28,6 +31,11 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        if(!sentenceDone) {
+            sentenceDone = true;
+            return;
+        }
+
         if(sentences.Count == 0)
         {
             EndDialogue();
@@ -42,11 +50,17 @@ public class DialogueManager : MonoBehaviour
     IEnumerator TypeSentence(string sentence)
     {
         dialogueText.text  = "";
+        sentenceDone = false;
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return null;
+            if(sentenceDone) {
+                dialogueText.text = sentence;
+                break;
+            }
+            yield return new WaitForSeconds(TEXT_DISPLAY_SPEED);
         }
+        sentenceDone = true;
     }
 
     public void EndDialogue()
