@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9208,6 +9208,16 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Dash
     clip: {fileID: 8300000, guid: c8539c1827ad3e149b909978e22ad88d, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Narrator Voice
+    clip: {fileID: 8300000, guid: bbb7f3c3ee0ad924c96ddee04afbe73e, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Ram Voice
+    clip: {fileID: 8300000, guid: 3e5c9a4f461bd4a46a00b1eb79a5ca53, type: 3}
     volume: 1
     loop: 0
     source: {fileID: 0}
