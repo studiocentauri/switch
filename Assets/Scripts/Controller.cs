@@ -157,6 +157,8 @@ public class Controller : MonoBehaviour
 
     private void Dash()
     {
+        rb.gameObject.GetComponentInChildren<Animator>().SetBool("isJump", false);
+        rb.gameObject.GetComponentInChildren<Animator>().SetBool("isSmash", true);
         Debug.Log("dir " + lookDirection);
         Vector2 dashDirection = lookDirection * Vector2.right;
         Debug.Log("Force is:- " + dashDirection * dashForce + " with Direction " + dashDirection);
