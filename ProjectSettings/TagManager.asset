@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Platform
+  - Character 2
+  - Character 1
+  - Character
   layers:
   - Default
   - TransparentFX
@@ -41,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 1844170983
     locked: 0
