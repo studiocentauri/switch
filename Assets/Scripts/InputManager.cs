@@ -21,6 +21,9 @@ public class InputManager : MonoBehaviour
     public TileFlip tileflip;
     public DialogueManager dialogueManager;
 
+    public delegate void SmashAction(float gp_x);
+    public static event SmashAction onSmash;
+
     [SerializeField] bool isInSync; // other player is in sync with the player
 
     public void OnMove(InputValue value)
@@ -114,6 +117,12 @@ public class InputManager : MonoBehaviour
     }
 
     public void ApplyGroundPound(float gp_x) {
+
+        if(onSmash != null)
+        {
+            onSmash(gp_x);
+        }
+
         float jumpFactor = 1.2f/Mathf.Pow(Mathf.Abs(playerControllers[1 - currentPlayer].transform.position.x - gp_x), GROUND_POUND_NORMALIZATION_CONSTANT);
         if(jumpFactor < 0.5f) { jumpFactor = 0f; } 
         if(playerControllers[currentPlayer].isMale) {
