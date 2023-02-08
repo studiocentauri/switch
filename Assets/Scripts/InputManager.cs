@@ -19,6 +19,7 @@ public class InputManager : MonoBehaviour
     public CameraManagement camfemale;
     public ObstacleSwitch obstacleSwitch;
     public TileFlip tileflip;
+    public DialogueManager dialogueManager;
 
     [SerializeField] bool isInSync; // other player is in sync with the player
 
@@ -37,6 +38,7 @@ public class InputManager : MonoBehaviour
     public void OnSwitch()
     {
         playerControllers[currentPlayer].rb.velocity = new Vector2(0, playerControllers[currentPlayer].rb.velocity.y); // stops the current player
+        playerControllers[currentPlayer].rb.gameObject.GetComponentInChildren<Animator>().SetFloat("isRunning", 0);
         currentPlayer = 1 - currentPlayer; // switches the player
         
         if(currentPlayer == 0)
@@ -53,25 +55,40 @@ public class InputManager : MonoBehaviour
 
     public void OnSync()
     {
-        isInSync = !isInSync;
+        //isInSync = !isInSync;
     }
 
     public void OnMapSwitch()
     {
         obstacleSwitch.InitiateSwitch();
 
-        Debug.Log(tileflip.transform.rotation.eulerAngles);
+        RaycastHit2D hit1 = Physics2D.Raycast(new Vector2(playerTransforms[0].position.x, -2.5f - playerTransforms[0].position.y), Vector2.down);
+        RaycastHit2D hit2 = Physics2D.Raycast(new Vector2(playerTransforms[1].position.x, -2.5f - playerTransforms[1].position.y), Vector2.up);
+        Debug.DrawRay(new Vector2(playerTransforms[0].position.x, -2.5f - playerTransforms[0].position.y), Vector2.down);
+        Debug.DrawRay(new Vector2(playerTransforms[1].position.x, -2.5f - playerTransforms[1].position.y), Vector2.up);
 
-        if(tileflip.transform.rotation.eulerAngles.y == 0)
+        if((hit1.collider == null || hit1.collider.name == "ScreenBoundry")&&(hit2.collider == null || hit2.collider.name == "ScreenBoundry"))
         {
-            tileflip.gameObject.GetComponent<Animator>().Play("TileFlipTo");
-            Debug.Log("Top");
+            if(tileflip.transform.rotation.eulerAngles.y == 0)
+            {
+                tileflip.gameObject.GetComponent<Animator>().Play("TileFlipTo");
+            }
+            else
+            {
+                tileflip.gameObject.GetComponent<Animator>().Play("TileFlipFrom");
+            }
         }
         else
         {
-            tileflip.gameObject.GetComponent<Animator>().Play("TileFlipFrom");
-            Debug.Log("Bottom");
+            Debug.Log(hit1.collider.name);
+            Debug.Log(hit2.collider.name);
+            Debug.Log("Cant flip now");
         }
+    }
+
+    public void OnNextDialogue()
+    {
+        dialogueManager.DisplayNextSentence();
     }
 
     void FixedUpdate()

@@ -17,7 +17,7 @@ public class Controller : MonoBehaviour
 
     public bool isGroundDown = true;
 
-    public List<Vector2> offset;
+    private List<Vector2> offset;
 
     public float detectRange = 0.1f;
 
@@ -25,9 +25,9 @@ public class Controller : MonoBehaviour
 
     public bool dummyIsOnGround = false;
 
-    private Vector2 gravityDir = new Vector2(0, 1);
+    // private Vector2 gravityDir = new Vector2(0, 1);
 
-    public float gravity = 50;
+    public float gravity = 15;
 
     public float jumpPow = 120;
 
@@ -51,6 +51,8 @@ public class Controller : MonoBehaviour
     public float dashForce = 20.0f;
 
     public float dashDuration = 0.2f;
+    private float halfWidth;
+    private float halfHeight;
 
     Animator animator;
     private InputManager inputManager;
@@ -60,11 +62,22 @@ public class Controller : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         inputManager = GameObject.Find("GameManager").GetComponent<InputManager>();
         switchgravfac = isGroundDown ? 1 : -1;
+
+        CapsuleCollider2D capsuleCollider2D = GetComponentInChildren<CapsuleCollider2D>();
+        halfWidth = capsuleCollider2D.bounds.size.x/2;
+        halfHeight = capsuleCollider2D.bounds.size.y/2;
+
+        offset = new List<Vector2>();
+
+        offset.Add(new Vector2(0, -halfHeight));
+        offset.Add(new Vector2(halfWidth, -halfHeight));
+        offset.Add(new Vector2(-halfWidth, -halfHeight));
+
+        rb.gravityScale = isMale ? gravity : -gravity;
     }
 
     public void FixedUpdate()
     {
-        DoGravity();
         if (rb.velocity.y * switchgravfac <= 0.01f)
         {
             foreach (Vector2 offseti in offset)
@@ -79,11 +92,12 @@ public class Controller : MonoBehaviour
 
                     rb.gameObject.GetComponentInChildren<Animator>().SetBool("isJump", false);
                     rb.gameObject.GetComponentInChildren<Animator>().SetBool("isSmash", false);
+
                     // apply camera shake if ground is touched after smash
                     if (isSmashing)
                     {
                         isSmashing = false;
-                        CameraManagement.Instance.ShakeCamera(10f, .3f);
+                        CameraManagement.Instance.ShakeCamera(4f, .2f);
                         inputManager.ApplyGroundPound(hit.point.x);
                     }
 
@@ -110,7 +124,6 @@ public class Controller : MonoBehaviour
     {
         if (dummyIsOnGround)
         {
-            Debug.Log("Jumped");
             Vector2 resVec = isGroundDown ? Vector2.up * jumpPow * jumpFactor : Vector2.down * jumpPow * jumpFactor;
             rb.AddForce(resVec, ForceMode2D.Impulse);
             dummyIsOnGround = false;
@@ -120,28 +133,8 @@ public class Controller : MonoBehaviour
         }
     }
 
-    public void DoGravity()
-    {
-        if (isGroundDown)
-        {
-            if (!isOnGround)
-            {
-                rb.AddForce(gravity * gravityDir * -1);
-            }
-        }
-        else
-        {
-            if (!isOnGround)
-            {
-                rb.AddForce(gravityDir * gravity);
-            }
-        }
-
-    }
-
     public void ProcessPower()
     {
-        Debug.Log("Power Use");
         if (isMale && !isOnGround && canSpecial)
         {
             Smash();
@@ -154,7 +147,6 @@ public class Controller : MonoBehaviour
 
     private void Smash()
     {
-        Debug.Log("Smash");
         rb.gameObject.GetComponentInChildren<Animator>().SetBool("isJump", false);
         rb.gameObject.GetComponentInChildren<Animator>().SetBool("isSmash", true);
         rb.AddForce(isGroundDown ? Vector2.up * jumpPow : Vector2.down * jumpPow);
@@ -165,7 +157,8 @@ public class Controller : MonoBehaviour
 
     private void Dash()
     {
-        Debug.Log("Dash");
+        rb.gameObject.GetComponentInChildren<Animator>().SetBool("isJump", false);
+        rb.gameObject.GetComponentInChildren<Animator>().SetBool("isSmash", true);
         Debug.Log("dir " + lookDirection);
         Vector2 dashDirection = lookDirection * Vector2.right;
         Debug.Log("Force is:- " + dashDirection * dashForce + " with Direction " + dashDirection);
@@ -183,12 +176,12 @@ public class Controller : MonoBehaviour
 
     public void Move(float horizontal)
     {
+        animator.SetFloat("isRunning", Mathf.Abs(horizontal));
         Vector2 velocity = rb.velocity;
         if (canSpecial)
         {
             if (horizontal != 0.0f)
             {
-                animator.SetBool("isRunning", true);
                 lookDirection = horizontal / Mathf.Abs(horizontal);
                 velocity.x += acceleration * horizontal * Time.fixedDeltaTime;
                 velocity.x = Mathf.Clamp(velocity.x, -maxSpeed, maxSpeed);
@@ -196,7 +189,6 @@ public class Controller : MonoBehaviour
             }
             else
             {
-                animator.SetBool("isRunning", false);
                 velocity.x = Mathf.Lerp(velocity.x, 0.0f, friction);
 
             }
