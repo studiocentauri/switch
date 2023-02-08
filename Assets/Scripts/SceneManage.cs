@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneManage : MonoBehaviour
 {
-    private static SceneManage instance;
+    public static SceneManage instance;
 
     public static SceneManage GetInstance() {
         return instance;

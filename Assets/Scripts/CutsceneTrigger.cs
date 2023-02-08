@@ -9,7 +9,7 @@ public class CutsceneTrigger : MonoBehaviour
     [SerializeField] int nexLevel;
     private void Awake()
     {
-        sceneManage = SceneManage.GetInstance();
+        sceneManage = SceneManage.instance;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
