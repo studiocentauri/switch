@@ -16,27 +16,25 @@ public class AudioManager : MonoBehaviour
         else {
             Destroy(gameObject);
         }
+    }
 
+    void Start() {
         foreach (Sound s in sounds) {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
             
             s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
             s.source.loop = s.loop;
-        }
-    }
-
-    void Start() {
-        foreach (Sound s in sounds) {
-            s.source.Play();
+            s.source.playOnAwake = false;
         }
     }
 
     public void PlaySound(string name) {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        if(s == null) return;
-        // Debug.Log(s.source.clip.name);
+        if(s == null)  {
+            Debug.Log("Sound: " + name + " not found!");
+            return;
+        }
         s.source.Play();
     }
 
