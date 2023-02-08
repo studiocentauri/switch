@@ -130,6 +130,7 @@ public class Controller : MonoBehaviour
             isOnGround = false;
 
             rb.gameObject.GetComponentInChildren<Animator>().SetBool("isJump", true);
+            AudioManager.instance.PlaySound("Jump");
         }
     }
 
@@ -164,6 +165,7 @@ public class Controller : MonoBehaviour
         Debug.Log("Force is:- " + dashDirection * dashForce + " with Direction " + dashDirection);
         rb.AddForce(dashDirection * dashForce, ForceMode2D.Impulse);
         canSpecial = false;
+        AudioManager.instance.PlaySound("Dash");
         Invoke("StopDash", dashDuration);
     }
 
