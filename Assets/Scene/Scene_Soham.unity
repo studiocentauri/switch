@@ -8751,6 +8751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 918614840}
   dialogueCanvas: {fileID: 795351457}
+  TEXT_DISPLAY_SPEED: 0.05
 --- !u!4 &1523088819
 Transform:
   m_ObjectHideFlags: 0
