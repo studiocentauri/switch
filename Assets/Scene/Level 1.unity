@@ -3706,6 +3706,7 @@ MonoBehaviour:
   - {fileID: 763354565}
   - {fileID: 748683415}
   GROUND_POUND_NORMALIZATION_CONSTANT: 0.25
+  MAP_COOLDOWN: 0.1
   currentPlayer: 0
   cammale: {fileID: 980333634}
   camfemale: {fileID: 630393079}
