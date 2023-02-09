@@ -26,6 +26,7 @@ public class SceneManage : MonoBehaviour
         // Play Brush Stroke animation
         // Load the next scene only after completing the animation
         cnt_level = level;
+        AudioManager.instance.PlayBackground();
         SceneManager.LoadSceneAsync(1);
         if(GameManager.instance) {
             if(playable_levels.Contains(level)) {

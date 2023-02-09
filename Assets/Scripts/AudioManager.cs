@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -35,6 +36,8 @@ public class AudioManager : MonoBehaviour
                 s.source.outputAudioMixerGroup = audioMixers[1];
             }
         }
+
+        PlayBackground();
     }
 
     public void PlaySound(string name) {
@@ -47,12 +50,17 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 
-
-    public void ChangeMasterVolume() {
-
-    }
-
-    public void ChangeSFXVolume() {
+    public void PlayBackground() {
+        foreach (Sound snd in sounds) {
+            if(snd.loop) {
+                snd.source.Stop();
+            }
+        }
         
+        Debug.Log(SceneManager.GetSceneByBuildIndex(SceneManage.instance.GetCntLevel()).name);
+        Sound s = Array.Find(sounds, sound => sound.name == SceneManager.GetSceneByBuildIndex(SceneManage.instance.GetCntLevel()).name);
+        if(s == null) { return; }
+        
+        s.source.Play();
     }
 }

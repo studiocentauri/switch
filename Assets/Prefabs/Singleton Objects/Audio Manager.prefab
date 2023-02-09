@@ -78,3 +78,39 @@ MonoBehaviour:
     loop: 0
     isSFX: 1
     source: {fileID: 0}
+  - name: Chennai
+    clip: {fileID: 8300000, guid: 04c5c88b36950384ba3d6d1762f57be3, type: 3}
+    volume: 1
+    loop: 1
+    isSFX: 0
+    source: {fileID: 0}
+  - name: Delhi
+    clip: {fileID: 8300000, guid: 51ab31e5dbe713142ba96f084b8582fb, type: 3}
+    volume: 1
+    loop: 1
+    isSFX: 0
+    source: {fileID: 0}
+  - name: Srinagar
+    clip: {fileID: 8300000, guid: 765f1c7f261712b43bcf6ed5430856b7, type: 3}
+    volume: 1
+    loop: 1
+    isSFX: 0
+    source: {fileID: 0}
+  - name: Main Menu
+    clip: {fileID: 8300000, guid: 500472a2ae8b29b43b42e135c53c2981, type: 3}
+    volume: 1
+    loop: 1
+    isSFX: 0
+    source: {fileID: 0}
+  - name: Tutorial
+    clip: {fileID: 8300000, guid: a59cfb70e6209be4ebd9ced22631a297, type: 3}
+    volume: 1
+    loop: 1
+    isSFX: 0
+    source: {fileID: 0}
+  - name: Mini Tutorial
+    clip: {fileID: 8300000, guid: a59cfb70e6209be4ebd9ced22631a297, type: 3}
+    volume: 1
+    loop: 1
+    isSFX: 0
+    source: {fileID: 0}
