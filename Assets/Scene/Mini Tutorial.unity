@@ -1779,6 +1779,7 @@ MonoBehaviour:
   camfemale: {fileID: 630393079}
   tileflip: {fileID: 951072088}
   isInSync: 0
+  canSwitch: 0
 --- !u!4 &961467455
 Transform:
   m_ObjectHideFlags: 0
