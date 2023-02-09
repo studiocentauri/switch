@@ -49,7 +49,7 @@ public class Explodable : MonoBehaviour
         {
             //Destroy(gameObject);
             gameObject.GetComponent<PolygonCollider2D>().isTrigger= true;
-            Destroy(gameObject.GetComponent<SpriteRenderer>());
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
 
             StartCoroutine(DestoryThodaTimeBaad(1));
         }
