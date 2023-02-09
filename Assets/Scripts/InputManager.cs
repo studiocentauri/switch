@@ -17,7 +17,6 @@ public class InputManager : MonoBehaviour
 
     public CameraManagement cammale;
     public CameraManagement camfemale;
-    public ObstacleSwitch obstacleSwitch;
     public TileFlip tileflip;
 
     public delegate void SmashAction(float gp_x);
@@ -67,8 +66,6 @@ public class InputManager : MonoBehaviour
 
     public void OnMapSwitch()
     {
-        obstacleSwitch.InitiateSwitch();
-
         RaycastHit2D hit1 = Physics2D.Raycast(new Vector2(playerTransforms[0].position.x, -2.5f - playerTransforms[0].position.y), Vector2.down);
         RaycastHit2D hit2 = Physics2D.Raycast(new Vector2(playerTransforms[1].position.x, -2.5f - playerTransforms[1].position.y), Vector2.up);
         Debug.DrawRay(new Vector2(playerTransforms[0].position.x, -2.5f - playerTransforms[0].position.y), Vector2.down);
