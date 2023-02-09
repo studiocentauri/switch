@@ -7,7 +7,7 @@ public class TimerData : MonoBehaviour
     [SerializeField] int optimalTime;
     [SerializeField] int timeLimit;
     public bool hasTimer = false;
-    void Awake() {
+    void Start() {
         Score.instance.SetData(optimalTime, timeLimit, hasTimer);
     }
 }
