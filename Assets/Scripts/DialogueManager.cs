@@ -29,7 +29,7 @@ public class DialogueManager : MonoBehaviour
         {
             sentences.Enqueue(sentence);
         }
-        name = dialogue.name;
+        voiceName = dialogue.name;
         DisplayNextSentence();
     }
 
@@ -63,6 +63,7 @@ public class DialogueManager : MonoBehaviour
                 break;
             }
             if(voiceName == "Narrator") {
+                Debug.Log("Kaam kar chutiye!");
                 AudioManager.instance.PlaySound("Narrator Voice");
             }
             else if (voiceName == "Ram") {
