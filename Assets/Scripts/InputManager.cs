@@ -13,6 +13,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] Transform[] playerTransforms;
     [SerializeField] float GROUND_POUND_NORMALIZATION_CONSTANT = 0.3f;
     [SerializeField] float MAP_COOLDOWN = 0.1f;
+    [SerializeField] GameObject pauseMenu;
     private float map_timer = 0;
 
     public int currentPlayer; // active player identifier 0 for top and 1 for bottom.
@@ -28,6 +29,19 @@ public class InputManager : MonoBehaviour
 
     public bool canSwitch = true;
 
+    public void OnPause()
+    {
+        if (pauseMenu.activeInHierarchy)
+        {
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0f;
+        }
+    }
     public void OnMove(InputValue value)
     {
         var dir = value.Get<Vector2>();
