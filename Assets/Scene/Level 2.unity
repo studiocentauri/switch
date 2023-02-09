@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broken 1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
 --- !u!4 &4605786 stripped
@@ -195,6 +199,10 @@ PrefabInstance:
     - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_Name
       value: Broken 2 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     - target: {fileID: 4377174738778606830, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_RootOrder
@@ -301,6 +309,10 @@ PrefabInstance:
     - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
       propertyPath: m_Name
       value: Broken 1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
@@ -526,6 +538,10 @@ PrefabInstance:
     - target: {fileID: 4880558146222443061, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
       propertyPath: m_Name
       value: Food Cart
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880558146222443061, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
@@ -788,6 +804,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dustbin Blue (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
 --- !u!4 &185476295 stripped
@@ -992,6 +1012,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dustbin Green (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7427964733998283658, guid: ee26d3cbf9e03dd40abcd953a9eeb894, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 7427964733998283661, guid: ee26d3cbf9e03dd40abcd953a9eeb894, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1123,6 +1147,10 @@ PrefabInstance:
     - target: {fileID: 7532088387543691251, guid: e8d0f79fb24c114419ae96c7d0db185a, type: 3}
       propertyPath: m_Name
       value: Dustbin Orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532088387543691251, guid: e8d0f79fb24c114419ae96c7d0db185a, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 7532088387543691252, guid: e8d0f79fb24c114419ae96c7d0db185a, type: 3}
       propertyPath: m_RootOrder
@@ -1336,6 +1364,7 @@ PrefabInstance:
       propertyPath: m_RootOrder
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       value: 14
 =======
       value: 16
@@ -1343,6 +1372,9 @@ PrefabInstance:
 =======
       value: 16
 >>>>>>> b1d2916... Updated Scenes
+=======
+      value: 17
+>>>>>>> a3581f2... Updated Levels
       objectReference: {fileID: 0}
     - target: {fileID: 2977282267711508765, guid: c735fe61a47ffd34288f261a1c8f4cd0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1558,6 +1590,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Food Cart
       objectReference: {fileID: 0}
+    - target: {fileID: 4880558146222443061, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
 --- !u!4 &320173032 stripped
@@ -1620,6 +1656,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broken 1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
 --- !u!4 &320420769 stripped
@@ -1639,7 +1679,7 @@ GameObject:
   - component: {fileID: 323248971}
   m_Layer: 0
   m_Name: button_green
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1825,6 +1865,7 @@ PrefabInstance:
       propertyPath: m_RootOrder
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       value: 15
 =======
       value: 17
@@ -1832,6 +1873,9 @@ PrefabInstance:
 =======
       value: 17
 >>>>>>> b1d2916... Updated Scenes
+=======
+      value: 18
+>>>>>>> a3581f2... Updated Levels
       objectReference: {fileID: 0}
     - target: {fileID: 5379199313982250088, guid: fef3529a976dace48b4cacd355ac0d23, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2119,6 +2163,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dustbin Blue (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
 --- !u!4 &538787052 stripped
@@ -2235,6 +2283,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Metro
       objectReference: {fileID: 0}
+    - target: {fileID: 503526624612466427, guid: 842d0797cfb060e42b66088a67e45e68, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     - target: {fileID: 503526624612466428, guid: 842d0797cfb060e42b66088a67e45e68, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -2340,6 +2392,10 @@ PrefabInstance:
     - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
       propertyPath: m_Name
       value: Broken 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
@@ -2486,6 +2542,10 @@ PrefabInstance:
     - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
       propertyPath: m_Name
       value: Dustbin Blue (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
@@ -3048,6 +3108,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dustbin Blue (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
 --- !u!4 &634068434 stripped
@@ -3110,6 +3174,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broken 1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
 --- !u!4 &666845704 stripped
@@ -3171,6 +3239,10 @@ PrefabInstance:
     - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
       propertyPath: m_Name
       value: Broken 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
@@ -3565,6 +3637,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broken 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
 --- !u!4 &716906240 stripped
@@ -3853,6 +3929,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Metro (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 503526624612466427, guid: 842d0797cfb060e42b66088a67e45e68, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     - target: {fileID: 503526624612466428, guid: 842d0797cfb060e42b66088a67e45e68, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -3958,6 +4038,10 @@ PrefabInstance:
     - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
       propertyPath: m_Name
       value: Dustbin Blue (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
@@ -4078,6 +4162,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broken 2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     - target: {fileID: 4377174738778606830, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -4183,6 +4271,10 @@ PrefabInstance:
     - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
       propertyPath: m_Name
       value: Broken 1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
@@ -4565,6 +4657,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barricade 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1855929984325207488, guid: 1f708bb552a533148b6382f7d6290af3, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 1855929984325207495, guid: 1f708bb552a533148b6382f7d6290af3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4771,6 +4867,10 @@ PrefabInstance:
     - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
       propertyPath: m_Name
       value: Broken 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
@@ -65448,6 +65548,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dustbin Green
       objectReference: {fileID: 0}
+    - target: {fileID: 7427964733998283658, guid: ee26d3cbf9e03dd40abcd953a9eeb894, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 7427964733998283661, guid: ee26d3cbf9e03dd40abcd953a9eeb894, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -65594,10 +65698,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2068475467}
+  m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -65852,6 +65955,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dustbin Blue (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
 --- !u!4 &988377909 stripped
@@ -65894,8 +66001,8 @@ Transform:
   - {fileID: 1677991131}
   - {fileID: 2058313630}
   - {fileID: 603160050}
-  - {fileID: 283541460}
   - {fileID: 1450555943}
+  - {fileID: 283541460}
   m_Father: {fileID: 1927225941}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -65953,6 +66060,10 @@ PrefabInstance:
     - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
       propertyPath: m_Name
       value: Dustbin Blue (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
@@ -66100,6 +66211,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dustbin Blue (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
 --- !u!4 &1044466339 stripped
@@ -66161,6 +66276,10 @@ PrefabInstance:
     - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
       propertyPath: m_Name
       value: Dustbin Blue (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
@@ -66574,7 +66693,7 @@ GameObject:
   - component: {fileID: 1126173376}
   m_Layer: 0
   m_Name: button_green (6)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66702,6 +66821,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broken 1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
 --- !u!4 &1130646137 stripped
@@ -66765,6 +66888,10 @@ PrefabInstance:
     - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_Name
       value: Broken 2 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     - target: {fileID: 4377174738778606830, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_RootOrder
@@ -66937,6 +67064,10 @@ PrefabInstance:
     - target: {fileID: 4880558146222443061, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
       propertyPath: m_Name
       value: Food Cart
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880558146222443061, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
@@ -67521,6 +67652,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Food Cart (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4880558146222443061, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
 --- !u!4 &1221876723 stripped
@@ -67582,6 +67717,10 @@ PrefabInstance:
     - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
       propertyPath: m_Name
       value: Dustbin Blue (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
@@ -73817,6 +73956,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dustbin Blue
       objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
 --- !u!4 &1246996702 stripped
@@ -73836,7 +73979,7 @@ GameObject:
   - component: {fileID: 1248177248}
   m_Layer: 0
   m_Name: button_red
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73963,6 +74106,10 @@ PrefabInstance:
     - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
       propertyPath: m_Name
       value: Dustbin Blue (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
@@ -74225,6 +74372,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dustbin Blue (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
 --- !u!4 &1291839348 stripped
@@ -74459,6 +74610,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broken 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     - target: {fileID: 4377174738778606830, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -74583,6 +74738,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broken 2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     - target: {fileID: 4377174738778606830, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -74644,6 +74803,10 @@ PrefabInstance:
     - target: {fileID: 503526624612466427, guid: 842d0797cfb060e42b66088a67e45e68, type: 3}
       propertyPath: m_Name
       value: Metro (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 503526624612466427, guid: 842d0797cfb060e42b66088a67e45e68, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     - target: {fileID: 503526624612466428, guid: 842d0797cfb060e42b66088a67e45e68, type: 3}
       propertyPath: m_RootOrder
@@ -74812,6 +74975,10 @@ PrefabInstance:
     - target: {fileID: 4880558146222443061, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
       propertyPath: m_Name
       value: Food Cart (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880558146222443061, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
@@ -75084,6 +75251,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broken 1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
 --- !u!4 &1386399931 stripped
@@ -75101,6 +75272,10 @@ PrefabInstance:
     - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_Name
       value: Broken 2 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     - target: {fileID: 4377174738778606830, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_RootOrder
@@ -75163,6 +75338,10 @@ PrefabInstance:
     - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_Name
       value: Broken 2 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     - target: {fileID: 4377174738778606830, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_RootOrder
@@ -75686,6 +75865,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Food Cart
       objectReference: {fileID: 0}
+    - target: {fileID: 4880558146222443061, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
 --- !u!4 &1509091843 stripped
@@ -75704,6 +75887,10 @@ PrefabInstance:
     - target: {fileID: 1727070818066574371, guid: 3513451654066874f983a9da1ace96ed, type: 3}
       propertyPath: m_Name
       value: Barricade 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1727070818066574371, guid: 3513451654066874f983a9da1ace96ed, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 1727070818066574372, guid: 3513451654066874f983a9da1ace96ed, type: 3}
       propertyPath: m_RootOrder
@@ -78917,6 +79104,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dustbin Green (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7427964733998283658, guid: ee26d3cbf9e03dd40abcd953a9eeb894, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 7427964733998283661, guid: ee26d3cbf9e03dd40abcd953a9eeb894, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -79012,6 +79203,10 @@ PrefabInstance:
     - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_Name
       value: Broken 2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     - target: {fileID: 4377174738778606830, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_RootOrder
@@ -79118,6 +79313,10 @@ PrefabInstance:
     - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
       propertyPath: m_Name
       value: Broken 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
@@ -79265,6 +79464,10 @@ PrefabInstance:
     - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
       propertyPath: m_Name
       value: Dustbin Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
@@ -79429,6 +79632,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dustbin Blue (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
 --- !u!4 &1620704056 stripped
@@ -79490,6 +79697,10 @@ PrefabInstance:
     - target: {fileID: 4880558146222443061, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
       propertyPath: m_Name
       value: Food Cart (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880558146222443061, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
@@ -79592,6 +79803,10 @@ PrefabInstance:
     - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_Name
       value: Broken 2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     - target: {fileID: 4377174738778606830, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_RootOrder
@@ -79790,6 +80005,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broken 2 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     - target: {fileID: 4377174738778606830, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -79851,6 +80070,10 @@ PrefabInstance:
     - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_Name
       value: Broken 2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     - target: {fileID: 4377174738778606830, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_RootOrder
@@ -79958,6 +80181,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broken 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
 --- !u!4 &1710279152 stripped
@@ -80019,6 +80246,10 @@ PrefabInstance:
     - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
       propertyPath: m_Name
       value: Dustbin Blue (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
@@ -80144,6 +80375,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dustbin Blue (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
 --- !u!4 &1719970986 stripped
@@ -80205,6 +80440,10 @@ PrefabInstance:
     - target: {fileID: 4880558146222443061, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
       propertyPath: m_Name
       value: Food Cart (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880558146222443061, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
@@ -80396,6 +80635,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broken 1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
 --- !u!4 &1769266706 stripped
@@ -80515,6 +80758,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broken 2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     - target: {fileID: 4377174738778606830, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -80621,6 +80868,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dustbin Blue (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
 --- !u!4 &1804311377 stripped
@@ -80683,6 +80934,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dustbin Blue (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
 --- !u!4 &1828232898 stripped
@@ -80744,6 +80999,10 @@ PrefabInstance:
     - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
       propertyPath: m_Name
       value: Broken 1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3291260621377618527, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82efb84677c98fa4d81f5b517a900877, type: 3}
@@ -81208,6 +81467,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dustbin Blue (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
 --- !u!4 &1967517164 stripped
@@ -81313,6 +81576,10 @@ PrefabInstance:
     - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_Name
       value: Broken 2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     - target: {fileID: 4377174738778606830, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_RootOrder
@@ -82100,6 +82367,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broken 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4377174738778606825, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     - target: {fileID: 4377174738778606830, guid: f9d65aebc364f4c4e9819f651d6b69c7, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -82396,6 +82667,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dustbin Blue (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 7798167550956247684, guid: a85258e5529bde64faa1043a998117bc, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a85258e5529bde64faa1043a998117bc, type: 3}
 --- !u!4 &2101532638 stripped
@@ -82458,6 +82733,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Food Cart (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4880558146222443061, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
 --- !u!4 &2107479364 stripped
@@ -82475,6 +82754,10 @@ PrefabInstance:
     - target: {fileID: 503526624612466427, guid: 842d0797cfb060e42b66088a67e45e68, type: 3}
       propertyPath: m_Name
       value: Metro
+      objectReference: {fileID: 0}
+    - target: {fileID: 503526624612466427, guid: 842d0797cfb060e42b66088a67e45e68, type: 3}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     - target: {fileID: 503526624612466428, guid: 842d0797cfb060e42b66088a67e45e68, type: 3}
       propertyPath: m_RootOrder
@@ -82581,6 +82864,10 @@ PrefabInstance:
     - target: {fileID: 4880558146222443061, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
       propertyPath: m_Name
       value: Food Cart (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880558146222443061, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3167bbe0f65f844991b634a4130f478, type: 3}
@@ -82700,6 +82987,10 @@ PrefabInstance:
     - target: {fileID: 7427964733998283658, guid: ee26d3cbf9e03dd40abcd953a9eeb894, type: 3}
       propertyPath: m_Name
       value: Dustbin Green (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427964733998283658, guid: ee26d3cbf9e03dd40abcd953a9eeb894, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7427964733998283661, guid: ee26d3cbf9e03dd40abcd953a9eeb894, type: 3}
       propertyPath: m_RootOrder
