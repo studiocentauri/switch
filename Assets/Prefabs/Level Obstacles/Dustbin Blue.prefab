@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7798167550956247695}
   - component: {fileID: 7798167550956247680}
   - component: {fileID: -86343607693756624}
+  - component: {fileID: -3302908713836194135}
   m_Layer: 0
   m_Name: Dustbin Blue
   m_TagString: Untagged
@@ -90,7 +91,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &7798167550956247682
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -107,7 +108,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!61 &7798167550956247695
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -166,4 +167,16 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
+--- !u!114 &-3302908713836194135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7798167550956247684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d1ebaa5fbcc364890c007762edb1d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
