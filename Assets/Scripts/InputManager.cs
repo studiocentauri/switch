@@ -13,6 +13,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] Transform[] playerTransforms;
     [SerializeField] float GROUND_POUND_NORMALIZATION_CONSTANT = 0.3f;
     [SerializeField] float MAP_COOLDOWN = 0.1f;
+    [SerializeField] GameObject pauseMenu;
     private float map_timer = 0;
 
     public int currentPlayer; // active player identifier 0 for top and 1 for bottom.
@@ -26,6 +27,21 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] bool isInSync; // other player is in sync with the player
 
+    public bool canSwitch = true;
+
+    public void OnPause()
+    {
+        if (pauseMenu.activeInHierarchy)
+        {
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0f;
+        }
+    }
     public void OnMove(InputValue value)
     {
         var dir = value.Get<Vector2>();
@@ -40,21 +56,24 @@ public class InputManager : MonoBehaviour
 
     public void OnSwitch()
     {
-        playerControllers[currentPlayer].isActive = false;
-        playerControllers[currentPlayer].rb.velocity = new Vector2(0, playerControllers[currentPlayer].rb.velocity.y); // stops the current player
-        playerControllers[currentPlayer].rb.gameObject.GetComponentInChildren<Animator>().SetFloat("isRunning", 0);
-        currentPlayer = 1 - currentPlayer; // switches the player
-        playerControllers[currentPlayer].isActive = true;
+        if (canSwitch)
+        {
+            playerControllers[currentPlayer].isActive = false;
+            playerControllers[currentPlayer].rb.velocity = new Vector2(0, playerControllers[currentPlayer].rb.velocity.y); // stops the current player
+            playerControllers[currentPlayer].rb.gameObject.GetComponentInChildren<Animator>().SetFloat("isRunning", 0);
+            currentPlayer = 1 - currentPlayer; // switches the player
+            playerControllers[currentPlayer].isActive = true;
 
-        if (currentPlayer == 0)
-        {
-            cammale.cinemachineVirtualCamera.Priority = 1;
-            camfemale.cinemachineVirtualCamera.Priority = 0;
-        }
-        else
-        {
-            cammale.cinemachineVirtualCamera.Priority = 0;
-            camfemale.cinemachineVirtualCamera.Priority = 1;
+            if (currentPlayer == 0)
+            {
+                cammale.cinemachineVirtualCamera.Priority = 1;
+                camfemale.cinemachineVirtualCamera.Priority = 0;
+            }
+            else
+            {
+                cammale.cinemachineVirtualCamera.Priority = 0;
+                camfemale.cinemachineVirtualCamera.Priority = 1;
+            }
         }
     }
 
@@ -65,33 +84,36 @@ public class InputManager : MonoBehaviour
 
     public void OnMapSwitch()
     {
-        RaycastHit2D hit1 = Physics2D.Raycast(new Vector2(playerTransforms[0].position.x, -2.5f - playerTransforms[0].position.y), Vector2.down);
-        RaycastHit2D hit2 = Physics2D.Raycast(new Vector2(playerTransforms[1].position.x, -2.5f - playerTransforms[1].position.y), Vector2.up);
-        Debug.DrawRay(new Vector2(playerTransforms[0].position.x, -2.5f - playerTransforms[0].position.y), Vector2.down);
-        Debug.DrawRay(new Vector2(playerTransforms[1].position.x, -2.5f - playerTransforms[1].position.y), Vector2.up);
-
-        if (map_timer >= MAP_COOLDOWN && (hit1.collider == null || hit1.collider.name == "ScreenBoundry") && (hit2.collider == null || hit2.collider.name == "ScreenBoundry"))
+        if (canSwitch)
         {
-            map_timer = 0; // reset cooldown timer
-            if (tileflip.transform.rotation.eulerAngles.y == 0)
+            RaycastHit2D hit1 = Physics2D.Raycast(new Vector2(playerTransforms[0].position.x, -2.5f - playerTransforms[0].position.y), Vector2.down);
+            RaycastHit2D hit2 = Physics2D.Raycast(new Vector2(playerTransforms[1].position.x, -2.5f - playerTransforms[1].position.y), Vector2.up);
+            Debug.DrawRay(new Vector2(playerTransforms[0].position.x, -2.5f - playerTransforms[0].position.y), Vector2.down);
+            Debug.DrawRay(new Vector2(playerTransforms[1].position.x, -2.5f - playerTransforms[1].position.y), Vector2.up);
+            if (map_timer >= MAP_COOLDOWN && (hit1.collider == null || hit1.collider.name == "ScreenBoundry" || hit1.collider.tag == "Player") && (hit2.collider == null || hit2.collider.name == "ScreenBoundry" || hit2.collider.tag == "Player"))
             {
-                tileflip.gameObject.GetComponent<Animator>().Play("TileFlipTo");
+                map_timer = 0; // reset cooldown timer
+                if (tileflip.transform.rotation.eulerAngles.y == 0)
+                {
+                    tileflip.gameObject.GetComponent<Animator>().Play("TileFlipTo");
+                }
+                else
+                {
+                    tileflip.gameObject.GetComponent<Animator>().Play("TileFlipFrom");
+                }
+
             }
             else
             {
-                tileflip.gameObject.GetComponent<Animator>().Play("TileFlipFrom");
+                Debug.Log(hit1.collider.name);
+                Debug.Log(hit2.collider.name);
+                Debug.Log("Cant flip now");
             }
-
-        }
-        else
-        {
-            Debug.Log(hit1.collider.name);
-            Debug.Log(hit2.collider.name);
-            Debug.Log("Cant flip now");
         }
     }
 
-    void Update() {
+    void Update()
+    {
         map_timer += Time.deltaTime; // implementing map cooldown
         map_timer = Mathf.Min(map_timer, MAP_COOLDOWN);
     }

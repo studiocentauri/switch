@@ -13,6 +13,20 @@ public class HighScoreTable : MonoBehaviour
     private int level;
     [SerializeField] Image[] levelImages;
     [SerializeField] Color[] colors;
+    [SerializeField] TMP_Text player_name;
+
+    public void OnContinue() {
+        if(player_name.text == "") { 
+            var num = PlayerPrefs.GetInt("PlayerNum", 1);
+            PlayerPrefs.SetString("PlayerName", "Player" + num);
+            num++;
+            PlayerPrefs.SetInt("PlayerNum", num);
+        }
+        else {
+            PlayerPrefs.SetString("PlayerName", player_name.text);
+        }
+        Debug.Log("player name set to: "+player_name.text);
+    }
     private void Awake()
     {
         entryTemplate.gameObject.SetActive(false);
