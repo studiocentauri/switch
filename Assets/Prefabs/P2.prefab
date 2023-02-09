@@ -67,7 +67,7 @@ MonoBehaviour:
   smashvel: 100
   dashForce: 100
   dashDuration: 0.15
-  isActive: 1
+  isActive: 0
 --- !u!50 &5379199313982250093
 Rigidbody2D:
   serializedVersion: 4
