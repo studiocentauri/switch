@@ -29,6 +29,9 @@ public class InputManager : MonoBehaviour
 
     public bool canSwitch = true;
 
+    void Start() {
+        AudioManager.instance.PlayBackground();
+    }
     public void OnPause()
     {
         if (pauseMenu.activeInHierarchy)
