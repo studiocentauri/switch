@@ -19,7 +19,9 @@ public class InputManager : MonoBehaviour
     public CameraManagement camfemale;
     public ObstacleSwitch obstacleSwitch;
     public TileFlip tileflip;
-    public DialogueManager dialogueManager;
+
+    public delegate void SmashAction(float gp_x);
+    public static event SmashAction onSmash;
 
     public delegate void SmashAction(float gp_x);
     public static event SmashAction onSmash;
@@ -40,9 +42,11 @@ public class InputManager : MonoBehaviour
 
     public void OnSwitch()
     {
+        playerControllers[currentPlayer].isActive=false;
         playerControllers[currentPlayer].rb.velocity = new Vector2(0, playerControllers[currentPlayer].rb.velocity.y); // stops the current player
         playerControllers[currentPlayer].rb.gameObject.GetComponentInChildren<Animator>().SetFloat("isRunning", 0);
         currentPlayer = 1 - currentPlayer; // switches the player
+        playerControllers[currentPlayer].isActive=true;
         
         if(currentPlayer == 0)
         {
@@ -87,11 +91,6 @@ public class InputManager : MonoBehaviour
             Debug.Log(hit2.collider.name);
             Debug.Log("Cant flip now");
         }
-    }
-
-    public void OnNextDialogue()
-    {
-        dialogueManager.DisplayNextSentence();
     }
 
     void FixedUpdate()

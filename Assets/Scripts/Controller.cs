@@ -7,6 +7,10 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
+    public ParticleSystem parSys;
+
+    public GameObject dustCloud;
+
     public Rigidbody2D rb;
 
     public float acceleration = 5.0f;
@@ -56,6 +60,8 @@ public class Controller : MonoBehaviour
 
     Animator animator;
     private InputManager inputManager;
+
+    public bool isActive=true;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -99,6 +105,7 @@ public class Controller : MonoBehaviour
                         isSmashing = false;
                         CameraManagement.Instance.ShakeCamera(4f, .2f);
                         inputManager.ApplyGroundPound(hit.point.x);
+                        Instantiate(dustCloud, transform.position, dustCloud.transform.rotation);
                     }
 
                     break;
@@ -160,17 +167,21 @@ public class Controller : MonoBehaviour
     {
         rb.gameObject.GetComponentInChildren<Animator>().SetBool("isJump", false);
         rb.gameObject.GetComponentInChildren<Animator>().SetBool("isSmash", true);
+        parSys.GetComponent<ParticleSystem>().enableEmission = true;
+        
         Debug.Log("dir " + lookDirection);
         Vector2 dashDirection = lookDirection * Vector2.right;
         Debug.Log("Force is:- " + dashDirection * dashForce + " with Direction " + dashDirection);
         rb.AddForce(dashDirection * dashForce, ForceMode2D.Impulse);
         canSpecial = false;
         AudioManager.instance.PlaySound("Dash");
+        SyncParticles();
         Invoke("StopDash", dashDuration);
     }
 
     void StopDash()
     {
+        parSys.GetComponent<ParticleSystem>().enableEmission = false;
         Vector2 velocity = rb.velocity;
         velocity.x = 0.0f;
         rb.velocity = velocity;
@@ -178,6 +189,7 @@ public class Controller : MonoBehaviour
 
     public void Move(float horizontal)
     {
+        
         animator.SetFloat("isRunning", Mathf.Abs(horizontal));
         Vector2 velocity = rb.velocity;
         if (canSpecial)
@@ -196,5 +208,13 @@ public class Controller : MonoBehaviour
             }
         }
         rb.velocity = velocity;
+
     }
+
+    void SyncParticles()
+    {
+        var main = parSys.main;
+        main.startRotationZ = transform.rotation.eulerAngles.z * -Mathf.Deg2Rad;
+    }
+    
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 503526624612466429}
   - component: {fileID: 503526624612466416}
   - component: {fileID: 503526624612466431}
+  - component: {fileID: 4612155739691971269}
   m_Layer: 0
   m_Name: Metro
   m_TagString: Untagged
@@ -89,7 +90,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &503526624612466429
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -106,7 +107,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!61 &503526624612466416
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -145,4 +146,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f8d03342ed3d443bc3b2c3c3db123c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+--- !u!114 &4612155739691971269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503526624612466427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f268b0cf62b2bd4e92e4bf3f7d64c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

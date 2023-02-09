@@ -11,11 +11,19 @@ public class MovObjSpawner : MonoBehaviour
 
     void Update()
     {
+        transform.parent = null;
+        Vector3 poi = Camera.main.WorldToScreenPoint(transform.position);
+        if (poi.x > 0 && poi.x < Screen.width && poi.y > 0 && poi.y < Screen.height)
+        {
+            Destroy(gameObject);
+        }
+
         currtime += Time.deltaTime;
-        if(istrig && currtime >= spawntime)
+        if (istrig && currtime >= spawntime)
         {
             currtime = 0;
-            Instantiate(movingObj, transform);
+            GameObject obj = Instantiate(movingObj, transform);
+            obj.transform.parent = null;
         }
     }
 }
