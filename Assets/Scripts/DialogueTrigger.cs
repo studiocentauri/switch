@@ -8,6 +8,8 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] bool cutsceneDialogue = false;
     private bool activated = false;
 
+    private GameObject player=null;
+
     void Start() {
         if(cutsceneDialogue) { TriggerDialogue(); }
     }
@@ -20,8 +22,21 @@ public class DialogueTrigger : MonoBehaviour
     {
         if(other.gameObject.tag == "Player" && !activated)
         {
+            player=other.gameObject;
             activated = true;
             TriggerDialogue();
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if(player!=null && activated)
+        {
+            if(!player.GetComponent<Controller>().isActive)
+            {
+                activated=false;
+                FindObjectOfType<DialogueManager>().EndDialogue();
+            }
         }
     }
 
@@ -29,6 +44,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         if(other.gameObject.tag == "Player" && activated)
         {
+            player=null;
             activated = false;
             FindObjectOfType<DialogueManager>().EndDialogue();
         }

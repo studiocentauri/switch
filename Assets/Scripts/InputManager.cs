@@ -39,9 +39,11 @@ public class InputManager : MonoBehaviour
 
     public void OnSwitch()
     {
+        playerControllers[currentPlayer].isActive=false;
         playerControllers[currentPlayer].rb.velocity = new Vector2(0, playerControllers[currentPlayer].rb.velocity.y); // stops the current player
         playerControllers[currentPlayer].rb.gameObject.GetComponentInChildren<Animator>().SetFloat("isRunning", 0);
         currentPlayer = 1 - currentPlayer; // switches the player
+        playerControllers[currentPlayer].isActive=true;
         
         if(currentPlayer == 0)
         {

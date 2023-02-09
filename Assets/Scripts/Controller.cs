@@ -60,6 +60,8 @@ public class Controller : MonoBehaviour
 
     Animator animator;
     private InputManager inputManager;
+
+    public bool isActive=true;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
