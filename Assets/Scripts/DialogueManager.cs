@@ -13,7 +13,7 @@ public class DialogueManager : MonoBehaviour
     private string voiceName;
     [SerializeField] bool isCutscene = false;
     [SerializeField] int next_scene_id = 0;
-    [SerializeField] float TEXT_DISPLAY_SPEED = 0.05f;
+    [SerializeField] float TEXT_DISPLAY_SPEED = 0.1f;
     
     void Start()
     {
@@ -29,7 +29,7 @@ public class DialogueManager : MonoBehaviour
         {
             sentences.Enqueue(sentence);
         }
-        name = dialogue.name;
+        voiceName = dialogue.name;
         DisplayNextSentence();
     }
 

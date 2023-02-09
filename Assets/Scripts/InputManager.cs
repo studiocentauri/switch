@@ -12,6 +12,8 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] Transform[] playerTransforms;
     [SerializeField] float GROUND_POUND_NORMALIZATION_CONSTANT = 0.3f;
+    [SerializeField] float MAP_COOLDOWN = 0.1f;
+    private float map_timer = 0;
 
     public int currentPlayer; // active player identifier 0 for top and 1 for bottom.
 
@@ -68,8 +70,9 @@ public class InputManager : MonoBehaviour
         Debug.DrawRay(new Vector2(playerTransforms[0].position.x, -2.5f - playerTransforms[0].position.y), Vector2.down);
         Debug.DrawRay(new Vector2(playerTransforms[1].position.x, -2.5f - playerTransforms[1].position.y), Vector2.up);
 
-        if ((hit1.collider == null || hit1.collider.name == "ScreenBoundry") && (hit2.collider == null || hit2.collider.name == "ScreenBoundry"))
+        if (map_timer >= MAP_COOLDOWN && (hit1.collider == null || hit1.collider.name == "ScreenBoundry") && (hit2.collider == null || hit2.collider.name == "ScreenBoundry"))
         {
+            map_timer = 0; // reset cooldown timer
             if (tileflip.transform.rotation.eulerAngles.y == 0)
             {
                 tileflip.gameObject.GetComponent<Animator>().Play("TileFlipTo");
@@ -78,6 +81,7 @@ public class InputManager : MonoBehaviour
             {
                 tileflip.gameObject.GetComponent<Animator>().Play("TileFlipFrom");
             }
+
         }
         else
         {
@@ -85,6 +89,11 @@ public class InputManager : MonoBehaviour
             Debug.Log(hit2.collider.name);
             Debug.Log("Cant flip now");
         }
+    }
+
+    void Update() {
+        map_timer += Time.deltaTime; // implementing map cooldown
+        map_timer = Mathf.Min(map_timer, MAP_COOLDOWN);
     }
 
     void FixedUpdate()
