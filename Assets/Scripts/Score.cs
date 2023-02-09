@@ -1,16 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Score : MonoBehaviour
 {
-   public int timeLimit=300;
+   public int timeLimit = 300;
 
-   public int optimalTime=120;
+   public int optimalTime = 120;
+
+    public bool shouldTimer = true;
 
    float timer=0.0f;
 
    bool countTime=true;
+    
+    public TextMeshProUGUI TimerText;
+
 
   public static Score instance;
 
@@ -26,11 +32,38 @@ public class Score : MonoBehaviour
 
    void Update()
    {
-        if(countTime)
+        if(shouldTimer)
         {
-            timer+=Time.deltaTime;
+            if(countTime) {
+                timer+=Time.deltaTime;
+                TimerText.text = "" + (int)(timeLimit-timer);
+            }
         }
    }
+
+    void Start()
+    {
+        SetText();
+   }
+
+    void SetText()
+    {
+        if (shouldTimer)
+        { 
+            TimerText = GameObject.Find("Canvas").transform.Find("Timer Text").GetComponent<TextMeshProUGUI>();
+            TimerText.text = "" + (int)(timeLimit - timer);
+        }
+    }
+
+    public void SetData(int optimalTime, int timeLimit, bool hasTimer) {
+        Debug.Log("Called thisf ");
+        countTime = true;
+        timer = 0;
+        this.optimalTime = optimalTime;
+        this.timeLimit = timeLimit;
+        shouldTimer = hasTimer;
+        SetText();
+    }
 
    public int GetScore()
    {

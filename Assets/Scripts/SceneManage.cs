@@ -7,7 +7,7 @@ public class SceneManage : MonoBehaviour
 {
     public static SceneManage instance;
     public static int cnt_level = 0;
-    private List<int> playable_levels = new List<int>{3, 5, 7};
+    private List<int> playable_levels = new List<int>{6, 7, 9};
     public static SceneManage GetInstance() {
         return instance;
     }
@@ -29,7 +29,7 @@ public class SceneManage : MonoBehaviour
         SceneManager.LoadSceneAsync(1);
         if(GameManager.instance) {
             if(playable_levels.Contains(level)) {
-            GameManager.instance.GetComponent<InputManager>().enabled = true;
+                GameManager.instance.GetComponent<InputManager>().enabled = true;
             }
             else {
                 GameManager.instance.GetComponent<InputManager>().enabled = false;

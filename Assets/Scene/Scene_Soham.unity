@@ -1443,7 +1443,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917968500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -119.177635, y: -6.51285, z: -10}
+  m_LocalPosition: {x: -119.089745, y: -1.13448, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2115,10 +2115,10 @@ MonoBehaviour:
   - {fileID: 6207099295771848399}
   - {fileID: 392294065}
   GROUND_POUND_NORMALIZATION_CONSTANT: 0.25
+  MAP_COOLDOWN: 0.1
   currentPlayer: 0
   cammale: {fileID: 980333634}
   camfemale: {fileID: 630393079}
-  obstacleSwitch: {fileID: 1074446601}
   tileflip: {fileID: 951072088}
   isInSync: 0
 --- !u!4 &961467455
@@ -9382,6 +9382,10 @@ PrefabInstance:
       value: Test Trigger
       objectReference: {fileID: 0}
     - target: {fileID: 3718307029232837919, guid: 82c97d1b651831c4283fb2c70bbbee59, type: 3}
+      propertyPath: dialogue.name
+      value: Ram
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718307029232837919, guid: 82c97d1b651831c4283fb2c70bbbee59, type: 3}
       propertyPath: dialogue.sentences.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -9413,7 +9417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4772269427634800163, guid: 82c97d1b651831c4283fb2c70bbbee59, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.03
+      value: -134
       objectReference: {fileID: 0}
     - target: {fileID: 4772269427634800163, guid: 82c97d1b651831c4283fb2c70bbbee59, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9625,5 +9629,9 @@ PrefabInstance:
       propertyPath: audioMixers.Array.data[1]
       value: 
       objectReference: {fileID: 1946429156163216236, guid: e6ee836322c038a41aa31d531e9add76, type: 2}
+    - target: {fileID: 8644040537704586767, guid: 9741d6ada5827e94faf37e3cb9f2ff14, type: 3}
+      propertyPath: sounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: fb7a4f6e53e6a2f4cbd1eb78db4426d9, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9741d6ada5827e94faf37e3cb9f2ff14, type: 3}
