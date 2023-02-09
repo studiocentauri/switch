@@ -167,11 +167,9 @@ public class Controller : MonoBehaviour
     {
         rb.gameObject.GetComponentInChildren<Animator>().SetBool("isJump", false);
         rb.gameObject.GetComponentInChildren<Animator>().SetBool("isSmash", true);
-        parSys.GetComponent<ParticleSystem>().enableEmission = true;
+        parSys.gameObject.SetActive(true);
         
-        Debug.Log("dir " + lookDirection);
         Vector2 dashDirection = lookDirection * Vector2.right;
-        Debug.Log("Force is:- " + dashDirection * dashForce + " with Direction " + dashDirection);
         rb.AddForce(dashDirection * dashForce, ForceMode2D.Impulse);
         canSpecial = false;
         AudioManager.instance.PlaySound("Dash");
@@ -181,7 +179,7 @@ public class Controller : MonoBehaviour
 
     void StopDash()
     {
-        parSys.GetComponent<ParticleSystem>().enableEmission = false;
+        parSys.gameObject.SetActive(false);
         Vector2 velocity = rb.velocity;
         velocity.x = 0.0f;
         rb.velocity = velocity;

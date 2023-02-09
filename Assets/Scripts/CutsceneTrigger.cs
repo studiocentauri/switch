@@ -17,7 +17,10 @@ public class CutsceneTrigger : MonoBehaviour
         if (other.tag == "Player")
             sum++;
         if (sum == 2)
+        {
+           int score= GameObject.Find("ScoreManager").GetComponent<Score>().GetScore();
             sceneManage.PlayLevel(nexLevel);
+        }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
