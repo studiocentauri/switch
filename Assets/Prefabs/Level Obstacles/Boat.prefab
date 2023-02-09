@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2184513871290130682}
   - component: {fileID: 2184513871290130677}
   - component: {fileID: 6813257632380489794}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Boat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &2184513871290130679
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -107,7 +107,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!61 &2184513871290130682
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5885944488876814047}
   - component: {fileID: 5885944488876814032}
   - component: {fileID: -1869031294398327576}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ice Cream
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &5885944488876814034
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -107,7 +107,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!61 &5885944488876814047
 BoxCollider2D:
   m_ObjectHideFlags: 0

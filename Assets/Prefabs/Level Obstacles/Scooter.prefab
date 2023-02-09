@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 574137645082014825}
   - component: {fileID: 8943000378885432140}
   - component: {fileID: 189195014198481147}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Scooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &5427232241047227919
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -108,7 +108,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5427232241047227917
 MonoBehaviour:
   m_ObjectHideFlags: 0
