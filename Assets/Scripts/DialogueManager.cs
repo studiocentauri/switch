@@ -8,39 +8,52 @@ public class DialogueManager : MonoBehaviour
 {
     public TextMeshProUGUI dialogueText;
     private Queue<string> sentences;
-    public GameObject dialogueCanvas;
+    public GameObject dialogueCanvasPlayer;
+    public GameObject dialogueCanvasNarrator;
     private bool sentenceDone = true;
     private string voiceName;
     [SerializeField] bool isCutscene = false;
     [SerializeField] int next_scene_id = 0;
     [SerializeField] float TEXT_DISPLAY_SPEED = 0.1f;
-    
+
     void Start()
     {
         sentences = new Queue<string>();
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(DialogueTrigger trigger)
     {
-        if(!isCutscene) dialogueCanvas.SetActive(true);
+        if (!isCutscene)
+        {
+            if (trigger.isOneTimeOnly)
+            {
+                dialogueCanvasNarrator.SetActive(true);
+            }
+            else
+            {
+                dialogueCanvasPlayer.SetActive(true);
+            }
+
+        }
         sentences.Clear();
         sentenceDone = true;
-        foreach (string sentence in dialogue.sentences)
+        foreach (string sentence in trigger.dialogue.sentences)
         {
             sentences.Enqueue(sentence);
         }
-        voiceName = dialogue.name;
+        voiceName = trigger.dialogue.name;
         DisplayNextSentence();
     }
 
     public void DisplayNextSentence()
     {
-        if(!sentenceDone) {
+        if (!sentenceDone)
+        {
             sentenceDone = true;
             return;
         }
 
-        if(sentences.Count == 0)
+        if (sentences.Count == 0)
         {
             EndDialogue();
             return;
@@ -53,19 +66,22 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator TypeSentence(string sentence)
     {
-        dialogueText.text  = "";
+        dialogueText.text = "";
         sentenceDone = false;
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            if(sentenceDone) {
+            if (sentenceDone)
+            {
                 dialogueText.text = sentence;
                 break;
             }
-            if(voiceName == "Narrator") {
+            if (voiceName == "Narrator")
+            {
                 AudioManager.instance.PlaySound("Narrator Voice");
             }
-            else if (voiceName == "Ram") {
+            else if (voiceName == "Ram")
+            {
                 AudioManager.instance.PlaySound("Ram Voice");
             }
             yield return new WaitForSeconds(TEXT_DISPLAY_SPEED);
@@ -74,11 +90,14 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void EndDialogue()
-    {   
-        if(!isCutscene) { // if it is not a cutscene, then it is an ingame dialogue
-            dialogueCanvas.SetActive(false);
+    {
+        if (!isCutscene)
+        { // if it is not a cutscene, then it is an ingame dialogue
+            dialogueCanvasNarrator.SetActive(false);
+            dialogueCanvasPlayer.SetActive(false);
         }
-        else { // else it is a cutscene dialogue
+        else
+        { // else it is a cutscene dialogue
             SceneManage.instance.PlayLevel(next_scene_id);
         }
     }

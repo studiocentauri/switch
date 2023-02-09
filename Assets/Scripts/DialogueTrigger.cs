@@ -8,21 +8,26 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] bool cutsceneDialogue = false;
     private bool activated = false;
 
-    private GameObject player=null;
+    private GameObject player = null;
 
-    void Start() {
-        if(cutsceneDialogue) { TriggerDialogue(); }
+    public bool isOneTimeOnly = true;
+
+    private float deleteTime = 0.2f;
+
+    void Start()
+    {
+        if (cutsceneDialogue) { TriggerDialogue(); }
     }
     public void TriggerDialogue()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        FindObjectOfType<DialogueManager>().StartDialogue(this);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player" && !activated)
+        if (other.gameObject.tag == "Player" && !activated)
         {
-            player=other.gameObject;
+            player = other.gameObject;
             activated = true;
             TriggerDialogue();
         }
@@ -30,11 +35,11 @@ public class DialogueTrigger : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(player!=null && activated)
+        if (player != null && activated)
         {
-            if(!player.GetComponent<Controller>().isActive)
+            if (!player.GetComponent<Controller>().isActive)
             {
-                activated=false;
+                activated = false;
                 FindObjectOfType<DialogueManager>().EndDialogue();
             }
         }
@@ -42,11 +47,21 @@ public class DialogueTrigger : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player" && activated)
+        if (other.gameObject.tag == "Player" && activated)
         {
-            player=null;
+            player = null;
             activated = false;
+            if (isOneTimeOnly)
+            {
+                isOneTimeOnly = false;
+                Invoke("DeleteDialogue", deleteTime);
+            }
             FindObjectOfType<DialogueManager>().EndDialogue();
         }
+    }
+
+    void DeleteDialogue()
+    {
+        Destroy(this.gameObject);
     }
 }
