@@ -5161,7 +5161,6 @@ MonoBehaviour:
   currentPlayer: 0
   cammale: {fileID: 980333634}
   camfemale: {fileID: 630393079}
-  obstacleSwitch: {fileID: 1074446601}
   tileflip: {fileID: 951072088}
   isInSync: 0
 --- !u!4 &961467455
@@ -16558,10 +16557,6 @@ PrefabInstance:
     - target: {fileID: 6207099295087118585, guid: 8be2f846ed8febb43a452ab901794b29, type: 3}
       propertyPath: m_Name
       value: Player (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6207099295087118585, guid: 8be2f846ed8febb43a452ab901794b29, type: 3}
-      propertyPath: m_TagString
-      value: Character 1
       objectReference: {fileID: 0}
     - target: {fileID: 6207099295087118589, guid: 8be2f846ed8febb43a452ab901794b29, type: 3}
       propertyPath: m_GravityScale
