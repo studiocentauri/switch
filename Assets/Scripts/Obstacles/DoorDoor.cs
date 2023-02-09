@@ -13,6 +13,15 @@ public class DoorDoor : MonoBehaviour
     }
     void Update()
     {
-        if(dooractive) { col.isTrigger = true; } else { col.isTrigger = false; };
+        if (dooractive)
+        {
+            col.isTrigger = true;
+            col.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        }
+        else
+        {
+            col.isTrigger = false;
+            col.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        };
     }
 }
