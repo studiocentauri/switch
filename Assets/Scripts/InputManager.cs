@@ -92,6 +92,7 @@ public class InputManager : MonoBehaviour
             Debug.DrawRay(new Vector2(playerTransforms[1].position.x, -2.5f - playerTransforms[1].position.y), Vector2.up);
             if (map_timer >= MAP_COOLDOWN && (hit1.collider == null || hit1.collider.name == "ScreenBoundry" || hit1.collider.tag == "Player") && (hit2.collider == null || hit2.collider.name == "ScreenBoundry" || hit2.collider.tag == "Player"))
             {
+                tileflip.transform.Find("Obstacles").GetComponent<FixRigidBodies>().SwapGravity();
                 map_timer = 0; // reset cooldown timer
                 if (tileflip.transform.rotation.eulerAngles.y == 0)
                 {
