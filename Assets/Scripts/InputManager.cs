@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    
+
     float horizontal = 0.0f;
 
     [SerializeField] Controller[] playerControllers;
@@ -21,9 +21,6 @@ public class InputManager : MonoBehaviour
 
     public delegate void SmashAction(float gp_x);
     public static event SmashAction onSmash;
-
-    // public delegate void SmashAction(float gp_x);
-    // public static event SmashAction onSmash;
 
     [SerializeField] bool isInSync; // other player is in sync with the player
 
@@ -41,20 +38,20 @@ public class InputManager : MonoBehaviour
 
     public void OnSwitch()
     {
-        playerControllers[currentPlayer].isActive=false;
+        playerControllers[currentPlayer].isActive = false;
         playerControllers[currentPlayer].rb.velocity = new Vector2(0, playerControllers[currentPlayer].rb.velocity.y); // stops the current player
         playerControllers[currentPlayer].rb.gameObject.GetComponentInChildren<Animator>().SetFloat("isRunning", 0);
         currentPlayer = 1 - currentPlayer; // switches the player
-        playerControllers[currentPlayer].isActive=true;
-        
-        if(currentPlayer == 0)
+        playerControllers[currentPlayer].isActive = true;
+
+        if (currentPlayer == 0)
         {
             cammale.cinemachineVirtualCamera.Priority = 1;
             camfemale.cinemachineVirtualCamera.Priority = 0;
         }
         else
         {
-            cammale.cinemachineVirtualCamera.Priority=0;
+            cammale.cinemachineVirtualCamera.Priority = 0;
             camfemale.cinemachineVirtualCamera.Priority = 1;
         }
     }
@@ -71,9 +68,9 @@ public class InputManager : MonoBehaviour
         Debug.DrawRay(new Vector2(playerTransforms[0].position.x, -2.5f - playerTransforms[0].position.y), Vector2.down);
         Debug.DrawRay(new Vector2(playerTransforms[1].position.x, -2.5f - playerTransforms[1].position.y), Vector2.up);
 
-        if((hit1.collider == null || hit1.collider.name == "ScreenBoundry")&&(hit2.collider == null || hit2.collider.name == "ScreenBoundry"))
+        if ((hit1.collider == null || hit1.collider.name == "ScreenBoundry") && (hit2.collider == null || hit2.collider.name == "ScreenBoundry"))
         {
-            if(tileflip.transform.rotation.eulerAngles.y == 0)
+            if (tileflip.transform.rotation.eulerAngles.y == 0)
             {
                 tileflip.gameObject.GetComponent<Animator>().Play("TileFlipTo");
             }
@@ -112,21 +109,24 @@ public class InputManager : MonoBehaviour
         // horizontal = 0.0f;
     }
 
-    public void ApplyGroundPound(float gp_x) {
+    public void ApplyGroundPound(float gp_x)
+    {
 
-        if(onSmash != null)
+        if (onSmash != null)
         {
             onSmash(gp_x);
         }
 
-        float jumpFactor = 1.2f/Mathf.Pow(Mathf.Abs(playerControllers[1 - currentPlayer].transform.position.x - gp_x), GROUND_POUND_NORMALIZATION_CONSTANT);
-        if(jumpFactor < 0.5f) { jumpFactor = 0f; } 
-        if(playerControllers[currentPlayer].isMale) {
+        float jumpFactor = 1.2f / Mathf.Pow(Mathf.Abs(playerControllers[1 - currentPlayer].transform.position.x - gp_x), GROUND_POUND_NORMALIZATION_CONSTANT);
+        if (jumpFactor < 0.5f) { jumpFactor = 0f; }
+        if (playerControllers[currentPlayer].isMale)
+        {
             playerControllers[1 - currentPlayer].ProcessJump(Mathf.Min(1.2f, jumpFactor));
         }
-        else {
+        else
+        {
             playerControllers[currentPlayer].ProcessJump(Mathf.Min(1.2f, jumpFactor));
         }
-        
+
     }
 }
