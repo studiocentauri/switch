@@ -1167,7 +1167,7 @@ PrefabInstance:
       objectReference: {fileID: 855495368}
     - target: {fileID: 7971765974902026654, guid: b82861d2fd7be8942839d641c55f6a12, type: 3}
       propertyPath: next_scene_id
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7971765974902026655, guid: b82861d2fd7be8942839d641c55f6a12, type: 3}
       propertyPath: m_Name

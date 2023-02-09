@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class SceneManage : MonoBehaviour
 {
     public static SceneManage instance;
-
+    public static int cnt_level = 0;
+    private List<int> playable_levels = new List<int>{3, 5, 7};
     public static SceneManage GetInstance() {
         return instance;
     }
@@ -24,6 +25,24 @@ public class SceneManage : MonoBehaviour
     {
         // Play Brush Stroke animation
         // Load the next scene only after completing the animation
-        SceneManager.LoadSceneAsync(level);
+        cnt_level = level;
+        SceneManager.LoadSceneAsync(1);
+        if(GameManager.instance) {
+            if(playable_levels.Contains(level)) {
+            GameManager.instance.GetComponent<InputManager>().enabled = true;
+            }
+            else {
+                GameManager.instance.GetComponent<InputManager>().enabled = false;
+            }
+        }
+    }
+
+    public int GetSceneID()
+    {
+        return SceneManager.GetActiveScene().buildIndex;
+    }
+
+    public int GetCntLevel() {
+        return cnt_level;
     }
 }
