@@ -8,10 +8,10 @@ public class Obstacle : MonoBehaviour
         this.gameObject.GetComponent<Animator>().Play("SwitchFade");
     }
     public void DisableCollider() {
-        this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        this.gameObject.GetComponent<Collider2D>().enabled = false;
     }
 
     public void EnableCollider() {
-        this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        this.gameObject.GetComponent<Collider2D>().enabled = true;
     }
 }

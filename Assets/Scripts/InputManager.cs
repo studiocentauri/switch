@@ -23,8 +23,8 @@ public class InputManager : MonoBehaviour
     public delegate void SmashAction(float gp_x);
     public static event SmashAction onSmash;
 
-    public delegate void SmashAction(float gp_x);
-    public static event SmashAction onSmash;
+    // public delegate void SmashAction(float gp_x);
+    // public static event SmashAction onSmash;
 
     [SerializeField] bool isInSync; // other player is in sync with the player
 

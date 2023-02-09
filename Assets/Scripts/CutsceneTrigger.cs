@@ -11,16 +11,17 @@ public class CutsceneTrigger : MonoBehaviour
     {
         sceneManage = SceneManage.instance;
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Character")
+    private void OnTriggerEnter2D(Collider2D other)
+    {   
+        Debug.Log(other.tag);
+        if (other.tag == "Player")
             sum++;
         if (sum == 2)
             sceneManage.PlayLevel(nexLevel);
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (collision.tag == "Character")
+        if (other.tag == "Player")
             sum--;
     }
 }
