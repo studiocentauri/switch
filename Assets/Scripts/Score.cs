@@ -9,6 +9,8 @@ public class Score : MonoBehaviour
 
    public int optimalTime = 120;
 
+    public bool shouldTimer = true;
+
    float timer=0.0f;
 
    bool countTime=true;
@@ -30,24 +32,30 @@ public class Score : MonoBehaviour
 
    void Update()
    {
-        if(countTime)
+        if(shouldTimer)
         {
-            timer+=Time.deltaTime;
-            TimerText.text = "" + (int)(timeLimit-timer);
+            if(countTime) {
+                timer+=Time.deltaTime;
+                TimerText.text = "" + (int)(timeLimit-timer);
+            }
         }
    }
 
-   void Start()
-   {
-        TimerText = GameObject.Find("Canvas").transform.Find("Timer Text").GetComponent<TextMeshProUGUI>();
-        TimerText.text = "" + (int)(timeLimit-timer);
+    void Start()
+    {
+        if (shouldTimer)
+        { 
+            TimerText = GameObject.Find("Canvas").transform.Find("Timer Text").GetComponent<TextMeshProUGUI>();
+            TimerText.text = "" + (int)(timeLimit - timer);
+        }
    }
 
-    public void SetData(int optimalTime, int timeLimit) {
+    public void SetData(int optimalTime, int timeLimit, bool hasTimer) {
         countTime = true;
         timer = 0;
         this.optimalTime = optimalTime;
         this.timeLimit = timeLimit;
+        shouldTimer = hasTimer;
     }
 
    public int GetScore()
