@@ -33,4 +33,8 @@ public class MainMenu : MonoBehaviour
         mixer.SetFloat("SFXVolume", Mathf.Log10(value) * 20);
         PlayerPrefs.SetFloat("SFXVolume", value);
     }
+    public void PlayLevel(int level)
+    {
+        SceneManage.instance.PlayLevel(level);
+    }
 }

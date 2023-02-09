@@ -7,6 +7,7 @@ public class CutsceneTrigger : MonoBehaviour
     int sum = 0;
     SceneManage sceneManage;
     [SerializeField] int nexLevel;
+    [SerializeField] GameObject endPrefab;
     private void Awake()
     {
         sceneManage = SceneManage.instance;
@@ -18,8 +19,10 @@ public class CutsceneTrigger : MonoBehaviour
             sum++;
         if (sum == 2)
         {
-           int score= GameObject.Find("ScoreManager").GetComponent<Score>().GetScore();
-            sceneManage.PlayLevel(nexLevel);
+            int score= GameObject.Find("ScoreManager").GetComponent<Score>().GetScore();
+            // sceneManage.PlayLevel(nexLevel);
+            endPrefab.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
     private void OnTriggerExit2D(Collider2D other)
