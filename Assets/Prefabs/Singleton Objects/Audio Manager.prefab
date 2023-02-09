@@ -52,13 +52,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 02d8b2655bc595444a64e31bc808b929, type: 3}
     volume: 1
     loop: 0
-    isSFX: 0
+    isSFX: 1
     source: {fileID: 0}
   - name: Dash
     clip: {fileID: 8300000, guid: c8539c1827ad3e149b909978e22ad88d, type: 3}
     volume: 1
     loop: 0
-    isSFX: 0
+    isSFX: 1
     source: {fileID: 0}
   - name: Narrator Voice
     clip: {fileID: 8300000, guid: bbb7f3c3ee0ad924c96ddee04afbe73e, type: 3}
@@ -71,4 +71,10 @@ MonoBehaviour:
     volume: 1
     loop: 0
     isSFX: 0
+    source: {fileID: 0}
+  - name: Button Click
+    clip: {fileID: 8300000, guid: ea7999f29544ae54c852a8520ae76428, type: 3}
+    volume: 1
+    loop: 0
+    isSFX: 1
     source: {fileID: 0}
