@@ -24,13 +24,13 @@ EditorBuildSettings:
     path: Assets/Scene/Cutscene 2.unity
     guid: 47dcc6656ea16c141ba01b78684fc3bb
   - enabled: 1
-    path: Assets/Scene/Level 1.unity
+    path: Assets/Scene/Chennai.unity
     guid: 291eca56269dc1744bc8f6ecff313360
   - enabled: 1
-    path: Assets/Scene/Level 2.unity
+    path: Assets/Scene/Delhi.unity
     guid: 6514a5af3b00afe43975d9f9ec4a5d94
   - enabled: 1
-    path: Assets/Scene/Level 3.unity
+    path: Assets/Scene/Srinagar.unity
     guid: 2274c98c6003ba644a0eeade8b564a19
   - enabled: 1
     path: Assets/Scene/Cutscene 3.unity

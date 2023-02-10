@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Runtime.CompilerServices;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -28,10 +29,12 @@ public class DialogueManager : MonoBehaviour
             if (trigger.isOneTimeOnly)
             {
                 dialogueCanvasNarrator.SetActive(true);
+                dialogueText = dialogueCanvasNarrator.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>(); 
             }
             else
             {
                 dialogueCanvasPlayer.SetActive(true);
+                dialogueText = dialogueCanvasPlayer.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             }
 
         }
