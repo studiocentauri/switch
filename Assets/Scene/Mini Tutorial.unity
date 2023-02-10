@@ -402,6 +402,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 830901705}
     m_Modifications:
     - target: {fileID: 2442738181760827157, guid: 2b06d881fdfe9954fbc7e895dd52ccb5, type: 3}
+      propertyPath: isOneTimeOnly
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2442738181760827157, guid: 2b06d881fdfe9954fbc7e895dd52ccb5, type: 3}
       propertyPath: dialogue.sentences.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1276,6 +1280,10 @@ PrefabInstance:
       value: Soham
       objectReference: {fileID: 0}
     - target: {fileID: 4416573442142495929, guid: cd5fb16b9b7ae074facbc86747cb8c31, type: 3}
+      propertyPath: isOneTimeOnly
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416573442142495929, guid: cd5fb16b9b7ae074facbc86747cb8c31, type: 3}
       propertyPath: dialogue.sentences.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1380,6 +1388,10 @@ PrefabInstance:
     - target: {fileID: 4416573442142495929, guid: cd5fb16b9b7ae074facbc86747cb8c31, type: 3}
       propertyPath: dialogue.name
       value: Soham
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416573442142495929, guid: cd5fb16b9b7ae074facbc86747cb8c31, type: 3}
+      propertyPath: isOneTimeOnly
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4416573442142495929, guid: cd5fb16b9b7ae074facbc86747cb8c31, type: 3}
       propertyPath: dialogue.sentences.Array.size
@@ -1663,7 +1675,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917968500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -130.78822, y: -2.53732, z: -10}
+  m_LocalPosition: {x: -125.799034, y: -2.53667, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2544,6 +2556,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 830901705}
     m_Modifications:
+    - target: {fileID: 2442738181760827157, guid: 2b06d881fdfe9954fbc7e895dd52ccb5, type: 3}
+      propertyPath: isOneTimeOnly
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2442738181760827157, guid: 2b06d881fdfe9954fbc7e895dd52ccb5, type: 3}
       propertyPath: dialogue.sentences.Array.size
       value: 2
@@ -7747,7 +7763,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 7
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!224 &1454059198
 RectTransform:
@@ -8601,8 +8617,8 @@ Tilemap:
   - first: {x: 9, y: 1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 7
-      m_TileSpriteIndex: 7
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -8741,8 +8757,8 @@ Tilemap:
   - first: {x: 8, y: 2, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 5
-      m_TileSpriteIndex: 5
+      m_TileIndex: 3
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -8751,8 +8767,8 @@ Tilemap:
   - first: {x: 9, y: 2, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 7
-      m_TileSpriteIndex: 7
+      m_TileIndex: 6
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -8761,8 +8777,8 @@ Tilemap:
   - first: {x: 10, y: 2, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -8858,54 +8874,24 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 8, y: 3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 3
-      m_TileSpriteIndex: 3
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 9, y: 3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 6
-      m_TileSpriteIndex: 6
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 10, y: 3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 18
+  - m_RefCount: 19
     m_Data: {fileID: 11400000, guid: 1a047a1838c388d48bf5ca840ffa8338, type: 2}
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: 5506e28149d8dbe4586ad848b63af7d2, type: 2}
-  - m_RefCount: 15
+  - m_RefCount: 14
     m_Data: {fileID: 11400000, guid: 3920f865d641fe341870d415536e62ae, type: 2}
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: 01d1fe8282f5622428af243dfd78cea1, type: 2}
   - m_RefCount: 7
     m_Data: {fileID: 11400000, guid: 6e79676ab66fbcf47b438b1bf747c3d5, type: 2}
-  - m_RefCount: 15
+  - m_RefCount: 14
     m_Data: {fileID: 11400000, guid: 1881f63ec7437bf44a4888c50981dbbd, type: 2}
   - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: 1ac9d397c6b987b4c9ac02f4a0483fa2, type: 2}
-  - m_RefCount: 2
-    m_Data: {fileID: 11400000, guid: b06fc6b9a3d30474a8f69c271d18a8b9, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 7
     m_Data: {fileID: 11400000, guid: 2fc2e2d0da80d734cac577fb23dc0454, type: 2}
   - m_RefCount: 9
@@ -8921,22 +8907,22 @@ Tilemap:
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 817246efdec9d3744bfcedf195c764b0, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 18
+  - m_RefCount: 19
     m_Data: {fileID: 21300000, guid: 443e64efef658834491c37972a113d17, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: 21300000, guid: bcf105815b85a374598c1a9b0b23437d, type: 3}
-  - m_RefCount: 15
+  - m_RefCount: 14
     m_Data: {fileID: 21300000, guid: c7ed76ccd49f03b45b9c2131a77ab87c, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: 21300000, guid: 9806c50a51d85c54684298730a58cb3d, type: 3}
   - m_RefCount: 7
     m_Data: {fileID: 21300000, guid: 54ed7337319a4634dbb86172d5454f87, type: 3}
-  - m_RefCount: 15
+  - m_RefCount: 14
     m_Data: {fileID: 21300000, guid: 7180994ae6efdb84f8966feb04e459f6, type: 3}
   - m_RefCount: 5
     m_Data: {fileID: 21300000, guid: 051446e594b4b0c4ca3575b045a88cdc, type: 3}
-  - m_RefCount: 2
-    m_Data: {fileID: 21300000, guid: 88ee348bd219a344fb00c3c22a20faca, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 7
     m_Data: {fileID: 21300000, guid: f83b7ac630ac2f74389dbf56f7b57e65, type: 3}
   - m_RefCount: 9
@@ -8952,7 +8938,7 @@ Tilemap:
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 37d8200d448b83846a3228dc6f9adf0a, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 101
+  - m_RefCount: 98
     m_Data:
       e00: 1
       e01: 0
@@ -8971,7 +8957,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 101
+  - m_RefCount: 98
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -9072,6 +9058,10 @@ PrefabInstance:
       value: Soham
       objectReference: {fileID: 0}
     - target: {fileID: 4416573442142495929, guid: cd5fb16b9b7ae074facbc86747cb8c31, type: 3}
+      propertyPath: isOneTimeOnly
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416573442142495929, guid: cd5fb16b9b7ae074facbc86747cb8c31, type: 3}
       propertyPath: dialogue.sentences.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -9138,6 +9128,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 830901705}
     m_Modifications:
+    - target: {fileID: 2442738181760827157, guid: 2b06d881fdfe9954fbc7e895dd52ccb5, type: 3}
+      propertyPath: isOneTimeOnly
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2442738181760827157, guid: 2b06d881fdfe9954fbc7e895dd52ccb5, type: 3}
       propertyPath: dialogue.sentences.Array.size
       value: 1
@@ -10135,6 +10129,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 830901705}
     m_Modifications:
     - target: {fileID: 2442738181760827157, guid: 2b06d881fdfe9954fbc7e895dd52ccb5, type: 3}
+      propertyPath: isOneTimeOnly
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2442738181760827157, guid: 2b06d881fdfe9954fbc7e895dd52ccb5, type: 3}
       propertyPath: dialogue.sentences.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -10534,6 +10532,10 @@ PrefabInstance:
       value: Soham
       objectReference: {fileID: 0}
     - target: {fileID: 4416573442142495929, guid: cd5fb16b9b7ae074facbc86747cb8c31, type: 3}
+      propertyPath: isOneTimeOnly
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416573442142495929, guid: cd5fb16b9b7ae074facbc86747cb8c31, type: 3}
       propertyPath: dialogue.sentences.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -10663,7 +10665,7 @@ MonoBehaviour:
 
 '
   cutsceneDialogue: 0
-  isOneTimeOnly: 1
+  isOneTimeOnly: 0
 --- !u!61 &1703738873963996933
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10698,7 +10700,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191214936728340920}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -81.9, y: 4.16, z: 0}
+  m_LocalPosition: {x: 150, y: 5.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
