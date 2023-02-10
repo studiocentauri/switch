@@ -55,8 +55,8 @@ public class ParallaxBG : MonoBehaviour
         float temp = cam.transform.position.x * (1 - parallax);
         float dist = cam.transform.position.x * parallax;
 
-        // transform.position = new Vector3( Mathf.SmoothStep( transform.position.x, startpose + dist, 0.25f), transform.position.y, transform.position.z);
-        transform.position = new Vector3(startpose + dist, transform.position.y, transform.position.z);
+        transform.position = new Vector3( Mathf.SmoothStep( transform.position.x, startpose + dist, 0.25f), transform.position.y, transform.position.z);
+        // transform.position = new Vector3(startpose + dist, transform.position.y, transform.position.z);
 
         if(temp > startpose + length) { startpose += length; }
         else if(temp < startpose - length) { startpose -= length; }

@@ -93,7 +93,7 @@ public class InputManager : MonoBehaviour
             RaycastHit2D hit2 = Physics2D.Raycast(new Vector2(playerTransforms[1].position.x, -2.5f - playerTransforms[1].position.y), Vector2.up);
             Debug.DrawRay(new Vector2(playerTransforms[0].position.x, -2.5f - playerTransforms[0].position.y), Vector2.down);
             Debug.DrawRay(new Vector2(playerTransforms[1].position.x, -2.5f - playerTransforms[1].position.y), Vector2.up);
-            if (map_timer >= MAP_COOLDOWN && (hit1.collider == null || hit1.collider.name == "ScreenBoundry" || hit1.collider.tag == "Player") && (hit2.collider == null || hit2.collider.name == "ScreenBoundry" || hit2.collider.tag == "Player"))
+            if (map_timer >= MAP_COOLDOWN && (hit1.collider == null || hit1.collider.name == "ScreenBoundry" || hit1.collider.tag == "Player" || hit1.collider.name == "Game End Trigger") && (hit2.collider == null || hit2.collider.name == "ScreenBoundry" || hit2.collider.tag == "Player" || hit2.collider.name == "Game End Trigger"))
             {
                 if(tileflip.transform.Find("Obstacles"))
                 {
@@ -114,6 +114,10 @@ public class InputManager : MonoBehaviour
             {
                 Debug.Log(hit1.collider.name);
                 Debug.Log(hit2.collider.name);
+                if(cammale.cinemachineVirtualCamera.Priority == 1)
+                    cammale.ShakeCamera(4f, .2f);
+                else
+                    camfemale.ShakeCamera(4f, .2f);
                 Debug.Log("Cant flip now");
             }
         }
