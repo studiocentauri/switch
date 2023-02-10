@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BumpMovObs : MonoBehaviour
 {
-    float dist = 5;
-    float ForceDist = 10;
+    public float dist = 5;
+    public float ForceDist = 10;
 
     void Start()
     {

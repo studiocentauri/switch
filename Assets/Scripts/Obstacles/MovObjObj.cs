@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class MovObjObj : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class MovObjObj : MonoBehaviour
         if (collision.collider.tag == "Player")
         {
             Debug.Log("Player Ded hahaha");
+            SceneManage.instance.PlayLevel(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

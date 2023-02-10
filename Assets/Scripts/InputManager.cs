@@ -29,6 +29,9 @@ public class InputManager : MonoBehaviour
 
     public bool canSwitch = true;
 
+    void Start() {
+        AudioManager.instance.PlayBackground();
+    }
     public void OnPause()
     {
         if (pauseMenu.activeInHierarchy)
@@ -92,6 +95,10 @@ public class InputManager : MonoBehaviour
             Debug.DrawRay(new Vector2(playerTransforms[1].position.x, -2.5f - playerTransforms[1].position.y), Vector2.up);
             if (map_timer >= MAP_COOLDOWN && (hit1.collider == null || hit1.collider.name == "ScreenBoundry" || hit1.collider.tag == "Player") && (hit2.collider == null || hit2.collider.name == "ScreenBoundry" || hit2.collider.tag == "Player"))
             {
+                if(tileflip.transform.Find("Obstacles"))
+                {
+                    tileflip.transform.Find("Obstacles").GetComponent<FixRigidBodies>().SwapGravity();
+                }
                 map_timer = 0; // reset cooldown timer
                 if (tileflip.transform.rotation.eulerAngles.y == 0)
                 {
@@ -148,7 +155,7 @@ public class InputManager : MonoBehaviour
             onSmash(gp_x);
         }
 
-        float jumpFactor = 1.2f / Mathf.Pow(Mathf.Abs(playerControllers[1 - currentPlayer].transform.position.x - gp_x), GROUND_POUND_NORMALIZATION_CONSTANT);
+        float jumpFactor = 1.8f / Mathf.Pow(Mathf.Abs(playerControllers[1 - currentPlayer].transform.position.x - gp_x), GROUND_POUND_NORMALIZATION_CONSTANT);
         if (jumpFactor < 0.5f) { jumpFactor = 0f; }
         if (playerControllers[currentPlayer].isMale)
         {

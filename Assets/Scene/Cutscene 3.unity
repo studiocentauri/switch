@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -931,7 +931,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1627537249}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -989,7 +989,7 @@ RectTransform:
   m_GameObject: {fileID: 1806174385}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1627537250}
@@ -997,7 +997,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 4, y: -16}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1806174387
@@ -1020,7 +1020,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7fd3cda14282bb7429b8eeb6c121e5bb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e26909968772e1c4184b76b62f4a8391, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1085,22 +1085,14 @@ MonoBehaviour:
   dialogue:
     name: Narrator
     sentences:
-    - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor velit
-      vel nisl commodo blandit. Sed euismod egestas erat, non feugiat sapien faucibus
-      vel. Nunc porta, sem id tristique viverra.
-    - 'and then there was none and then indededna sdasd hagega mutega at baje tuk
-      nasha karlena
-
-      aat baje idhar? ek din ki baad 3 ghanta so to me bimar
-
-      parne
-      hu'
-    - 'to mat so, sab ek saath chalenge need kese
-
-      tab to me jag gaya jagtai
-      chuda hua nahi hai na
-
-      dawai kha so mayankit when leave'
+    - Standing there then, I searched for my identity. Growing up, I felt like an
+      outsider, but there I found a connection with myself.
+    - That journey was not just physical but spiritual, as I sought self-realization
+      and a better understanding of who I am. I believe the answers I seek can be
+      found here in this place of beauty unclouded by the daily stifles of human
+      existence.
+    - "But I wondered, what else was there to come. Since then I have never looked
+      back and that has made me who I am today.\r"
   cutsceneDialogue: 1
   isOneTimeOnly: 1
 --- !u!1001 &7971765973237236825

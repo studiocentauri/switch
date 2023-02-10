@@ -29,6 +29,7 @@ public class DialogueTrigger : MonoBehaviour
         {
             player = other.gameObject;
             activated = true;
+            Debug.Log(gameObject.name + dialogue.sentences[0]);
             TriggerDialogue();
         }
     }

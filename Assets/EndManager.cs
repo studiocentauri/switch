@@ -14,13 +14,16 @@ public class EndManager : MonoBehaviour
     public void NextLevel(int level)
     {
         SceneManage.instance.PlayLevel(level);
+        Time.timeScale = 1f;
     }
     public void Replay()
     {
         SceneManage.instance.PlayLevel(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
     }
     public void MainMenu()
     {
         SceneManage.instance.PlayLevel(0);
+        Time.timeScale = 1f;
     }
 }

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7798167550956247680}
   - component: {fileID: -86343607693756624}
   - component: {fileID: -3302908713836194135}
+  - component: {fileID: 943630184758469558}
   m_Layer: 0
   m_Name: Dustbin Blue
   m_TagString: Respawn
@@ -178,5 +179,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3d1ebaa5fbcc364890c007762edb1d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &943630184758469558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7798167550956247684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f268b0cf62b2bd4e92e4bf3f7d64c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
