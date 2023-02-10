@@ -343,7 +343,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SCORE
+  m_text: TIME
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bd5eb875831f56c42a0b3e87e0fa46cc, type: 2}
   m_sharedMaterial: {fileID: 3684824974526408776, guid: bd5eb875831f56c42a0b3e87e0fa46cc, type: 2}
@@ -500,6 +500,7 @@ GameObject:
   - component: {fileID: 681602657580411352}
   - component: {fileID: 681602657580411355}
   - component: {fileID: 681602657580411354}
+  - component: {fileID: 5597256548810563087}
   m_Layer: 5
   m_Name: Score Canvas
   m_TagString: Untagged
@@ -590,3 +591,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5597256548810563087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681602657580411333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f11166cb7f2ef742acf870554c71dcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeLimit: 300
+  optimalTime: 120
+  shouldTimer: 1
+  TimerText: {fileID: 681602656837405578}

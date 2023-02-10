@@ -50,13 +50,13 @@ public class Score : MonoBehaviour
     {
         if (shouldTimer)
         { 
-            TimerText = GameObject.Find("Canvas").transform.Find("Timer Text").GetComponent<TextMeshProUGUI>();
+            TimerText = GameObject.Find("Score Canvas").transform.GetChild(1).transform.GetChild(0).transform.Find("Score").GetComponent<TextMeshProUGUI>();
             TimerText.text = "" + (int)(timeLimit - timer);
         }
     }
 
     public void SetData(int optimalTime, int timeLimit, bool hasTimer) {
-        Debug.Log("Called thisf ");
+        Debug.Log("Called this ");
         countTime = true;
         timer = 0;
         this.optimalTime = optimalTime;
