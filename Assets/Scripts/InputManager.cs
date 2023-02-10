@@ -152,7 +152,7 @@ public class InputManager : MonoBehaviour
             onSmash(gp_x);
         }
 
-        float jumpFactor = 1.2f / Mathf.Pow(Mathf.Abs(playerControllers[1 - currentPlayer].transform.position.x - gp_x), GROUND_POUND_NORMALIZATION_CONSTANT);
+        float jumpFactor = 1.8f / Mathf.Pow(Mathf.Abs(playerControllers[1 - currentPlayer].transform.position.x - gp_x), GROUND_POUND_NORMALIZATION_CONSTANT);
         if (jumpFactor < 0.5f) { jumpFactor = 0f; }
         if (playerControllers[currentPlayer].isMale)
         {
