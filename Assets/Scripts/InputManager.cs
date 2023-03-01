@@ -100,6 +100,7 @@ public class InputManager : MonoBehaviour
                     tileflip.transform.Find("Obstacles").GetComponent<FixRigidBodies>().SwapGravity();
                 }
                 map_timer = 0; // reset cooldown timer
+                AudioManager.instance.PlaySound("Map Switch");
                 if (tileflip.transform.rotation.eulerAngles.y == 0)
                 {
                     tileflip.gameObject.GetComponent<Animator>().Play("TileFlipTo");

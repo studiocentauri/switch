@@ -114,3 +114,9 @@ MonoBehaviour:
     loop: 1
     isSFX: 0
     source: {fileID: 0}
+  - name: Map Switch
+    clip: {fileID: 8300000, guid: 202f4f1eda6a4ef45a7f9d3f00761e54, type: 3}
+    volume: 1
+    loop: 0
+    isSFX: 1
+    source: {fileID: 0}

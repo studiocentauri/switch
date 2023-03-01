@@ -2329,6 +2329,7 @@ GameObject:
   - component: {fileID: 8829523667167485754}
   - component: {fileID: 3036877156500831843}
   - component: {fileID: 4483814787709767904}
+  - component: {fileID: 3472886646295458531}
   m_Layer: 0
   m_Name: Wall 1
   m_TagString: Untagged
@@ -2501,7 +2502,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &1600459194467381418
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2518,7 +2519,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1600459194467381416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2771,6 +2772,19 @@ MonoBehaviour:
   - {fileID: 9092482112074053990}
   - {fileID: 4206811502271037012}
   - {fileID: 3375788863346955526}
+--- !u!114 &3472886646295458531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600459194467381420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3e3d27f75615c4eb37579917398745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smashDist: 5
 --- !u!1 &1649198071701007840
 GameObject:
   m_ObjectHideFlags: 0
