@@ -6,6 +6,33 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scene/MainScene.unity
-    guid: 5f94be886f355fc41810869df51c9977
+    path: Assets/Scene/Main Menu.unity
+    guid: e0f75ce520b4c694599b0819eb3cdaf2
+  - enabled: 1
+    path: Assets/Scene/Loading Scene.unity
+    guid: 4ecad39ef88a4974ebe7847de7cfb932
+  - enabled: 1
+    path: Assets/Scene/Cutscene 1.unity
+    guid: dd704d1ca8e30604aae3766ebf793f4c
+  - enabled: 1
+    path: Assets/Scene/Mini Tutorial.unity
+    guid: 28cfac87349d75d4babb8ca614a37bac
+  - enabled: 1
+    path: Assets/Scene/Tutorial.unity
+    guid: 8555c128c1319ec4081141872e1873e2
+  - enabled: 1
+    path: Assets/Scene/Cutscene 2.unity
+    guid: 47dcc6656ea16c141ba01b78684fc3bb
+  - enabled: 1
+    path: Assets/Scene/Chennai.unity
+    guid: 291eca56269dc1744bc8f6ecff313360
+  - enabled: 1
+    path: Assets/Scene/Delhi.unity
+    guid: 6514a5af3b00afe43975d9f9ec4a5d94
+  - enabled: 1
+    path: Assets/Scene/Srinagar.unity
+    guid: 2274c98c6003ba644a0eeade8b564a19
+  - enabled: 1
+    path: Assets/Scene/Cutscene 3.unity
+    guid: 3e5db0393e604bc47a0fc08e8edd94a6
   m_configObjects: {}
